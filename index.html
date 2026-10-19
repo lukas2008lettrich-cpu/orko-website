@@ -1,0 +1,1332 @@
+<!doctype html>
+<html lang="sk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ORKO — Remeslá. Príležitosti. Budúcnosť.</title>
+<meta name="description" content="ORKO — platforma, ktorá ukazuje mladým ľuďom, že remeslá sú cesta k odbornosti, vlastnému podnikaniu a finančnej nezávislosti.">
+<meta property="og:title" content="ORKO — Remeslá. Príležitosti. Budúcnosť.">
+<meta property="og:description" content="Remeslá sú jedna z najviac podceňovaných príležitostí dnešnej doby. Ukazujeme prečo.">
+<meta name="theme-color" content="#000000">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<!-- Vercel Web Analytics (turn on in the Vercel project: Analytics tab -> Enable) -->
+<script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
+<script defer src="/_vercel/insights/script.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&amp;family=Instrument+Serif:ital@0;1&amp;family=Geist:wght@100..900&amp;family=Geist+Mono:wght@400;500&amp;display=swap">
+<style>
+body{margin:0;background:#000}
+a{color:inherit;text-decoration:none}a:hover{color:inherit}
+.orko{--bg:#000;--fg:#fff;--mute:#8c8c8c;--dim:#2b2b2b;--line:#1d1d1d;--panel:#080808;--f-display:"Geist",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;--f-head:"Archivo","Arial Narrow",sans-serif;--f-mono:"Geist Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;--gut:clamp(16px,4vw,48px);--ease:cubic-bezier(.2,.7,.1,1);position:relative;background:var(--bg);color:var(--fg);font-family:var(--f-display);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:clip}
+.orko *,.orko *::before,.orko *::after{box-sizing:border-box}
+.orko ::selection{background:#fff;color:#000}
+.orko button,.orko input,.orko textarea{font:inherit;color:inherit}
+.orko :focus-visible{outline:1px solid #fff;outline-offset:4px}
+.mono{font-family:var(--f-mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase}
+.wrap{max-width:1400px;margin-inline:auto;padding-inline:var(--gut)}
+.ghost{color:transparent;-webkit-text-stroke:1px #fff}
+
+/* nav */
+.nav-dock{position:sticky;top:0;z-index:80;height:0;mix-blend-mode:difference}
+.nav{position:absolute;left:0;right:0;top:0;padding:18px var(--gut);display:flex;justify-content:space-between;align-items:center;color:#fff}
+.nav-logo{display:flex;align-items:center;gap:12px;font-weight:700;letter-spacing:.02em;font-size:15px;min-height:44px}
+.nav-logo svg{width:28px;height:28px;animation:spin 14s linear infinite}
+.nav-logo path{fill:#fff;fill-rule:evenodd}
+.nav-links{display:flex;gap:28px}
+.nav-links a{position:relative;padding-block:6px}
+.nav-links a::after{content:"";position:absolute;left:0;bottom:0;height:1px;width:100%;background:currentColor;transform:scaleX(0);transform-origin:right;transition:transform .5s var(--ease)}
+.nav-links a:hover::after{transform:scaleX(1);transform-origin:left}
+.menu-btn{display:none;background:none;border:0;padding:0 4px;min-height:44px;min-width:44px;cursor:pointer;color:#fff}
+.progress{position:absolute;left:0;right:0;top:0;height:2px;background:#fff;transform-origin:left;transform:scaleX(0);display:none}
+.menu{position:fixed;inset:0;z-index:95;background:#000;display:flex;flex-direction:column;justify-content:center;gap:6px;padding:0 var(--gut);animation:menuIn .7s var(--ease) both}
+.menu a{font-size:clamp(40px,12vw,84px);font-weight:600;letter-spacing:-.04em;line-height:1.05;animation:rise2 .7s var(--ease) both;animation-delay:calc(var(--i) * 60ms + 120ms)}
+.menu .mono{color:var(--mute);margin-top:32px}
+.menu-close{position:absolute;top:18px;right:var(--gut);background:none;border:0;min-height:44px;min-width:44px;cursor:pointer}
+@keyframes menuIn{from{clip-path:inset(0 0 100% 0)}to{clip-path:inset(0 0 0 0)}}
+@keyframes rise2{from{transform:translateY(40px);opacity:0}to{transform:none;opacity:1}}
+@media (max-width:860px){.nav-links{display:none}.menu-btn{display:inline-flex;align-items:center}}
+
+/* intro */
+.intro{position:relative;height:calc(min(100vh,1400px) + 1600px)}
+.intro{height:calc(min(100svh,1400px) + 1600px)}
+.intro-stage{--p:0;position:sticky;top:0;height:min(100vh,1400px);height:min(100svh,1400px);min-height:600px;contain:layout paint;overflow:hidden;background:radial-gradient(ellipse 60% 55% at 50% 52%,#161616 0%,#050505 55%,#000 75%)}
+.intro-ui{position:absolute;inset:0;z-index:3;pointer-events:none;opacity:calc(1 - var(--p) * 5)}
+.intro-reveal{position:absolute;inset:0;margin:0;display:flex;align-items:center;justify-content:center;text-align:center;padding:0 var(--gut);z-index:3;font-size:clamp(36px,6.4vw,104px);font-weight:700;letter-spacing:-.05em;line-height:.95;opacity:clamp(0,calc((var(--p) - .72) * 4),1);transform:scale(calc(.9 + var(--p) * .1));pointer-events:none}
+.intro canvas{position:absolute;inset:0;width:100%;height:100%;display:block;z-index:2}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;margin:0}
+.intro canvas{will-change:transform,opacity}
+.iw{position:absolute;inset:0;margin:0;display:flex;align-items:center;justify-content:center;z-index:1;font-size:clamp(120px,25vw,400px);font-weight:800;letter-spacing:-.06em;line-height:.8;color:transparent;-webkit-text-stroke:1.2px rgba(255,255,255,.38);pointer-events:none;user-select:none;perspective:900px}
+.iw span{display:block;transform-origin:50% 100%}
+.mk{position:absolute;left:50%;top:50%;width:clamp(160px,24vw,320px);height:auto;transform:translate(-50%,-50%);z-index:2}
+.mk path{fill:#fff;fill-rule:evenodd}
+.tagline{position:absolute;left:0;right:0;bottom:96px;text-align:center;z-index:3;color:#fff}
+.hud{position:absolute;color:var(--mute);font-size:10px;z-index:3}
+.hud.tl{left:var(--gut);top:92px}.hud.tr{right:var(--gut);top:92px;text-align:right}
+.hud.bl{left:var(--gut);bottom:28px}.hud.br{right:var(--gut);bottom:28px;text-align:right}
+.scroll-hint{position:absolute;left:50%;bottom:24px;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:10px;color:#fff;font-size:10px;z-index:3}
+.scroll-hint i{display:block;width:1px;height:40px;background:var(--dim);position:relative;overflow:hidden}
+.scroll-hint i::after{content:"";position:absolute;left:0;top:-100%;width:1px;height:100%;background:#fff;animation:drip 1.8s var(--ease) infinite}
+@keyframes drip{to{top:100%}}
+@media (max-width:600px){.hud.tr,.hud.bl{display:none}.tagline{bottom:80px;font-size:9px}}
+
+/* hero */
+.hero{position:relative;padding-top:140px;isolation:isolate;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;z-index:-2;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:80px 80px;mask-image:radial-gradient(ellipse at 50% 40%,#000 10%,transparent 70%);-webkit-mask-image:radial-gradient(ellipse at 50% 40%,#000 10%,transparent 70%);opacity:.7}
+.hero::after{content:"";position:absolute;top:-200px;left:-10%;width:900px;height:700px;z-index:-1;background:radial-gradient(closest-side,rgba(255,255,255,.09),transparent);pointer-events:none}
+.hero-inner{display:grid;gap:clamp(24px,3vw,40px);padding-bottom:clamp(80px,10vw,140px)}
+.eyebrow{color:var(--mute);display:flex;align-items:center;gap:14px;margin:0}
+.eyebrow::before{content:"";width:28px;height:1px;background:var(--mute)}
+.hero-title{margin:0;font-size:clamp(46px,8.6vw,150px);font-weight:600;letter-spacing:-.055em;line-height:.9}
+.line{display:block;overflow:hidden;padding-bottom:.06em;margin-bottom:-.06em}
+.line > span{display:block}
+.hero-sub{max-width:34ch;font-size:clamp(18px,1.7vw,22px);color:var(--mute);line-height:1.5;margin:0}
+.ctas{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;gap:14px;padding:18px 28px;border-radius:999px;font-weight:600;font-size:16px;border:1px solid #fff;cursor:pointer;transition:background .4s,color .4s,transform .5s var(--ease)}
+.btn:hover{transform:translateY(-3px)}
+.btn-solid{background:#fff;color:#000}
+.btn-solid:hover{background:transparent;color:#fff}
+.btn-line{background:transparent;color:#fff}
+.btn-line:hover{background:#fff;color:#000}
+.btn .arr{display:inline-block;transition:transform .4s var(--ease)}
+.btn:hover .arr{transform:translateX(4px) rotate(-45deg)}
+
+/* marquee */
+.marquee{border-block:1px solid var(--line);overflow:hidden;padding-block:22px;background:#000}
+.mq-track{display:flex;width:max-content;white-space:nowrap}
+.mq-item{font-size:clamp(28px,4.4vw,64px);font-weight:600;letter-spacing:-.03em;padding-right:.6em;display:flex;align-items:center;gap:.6em;line-height:1.2}
+.mq-item i{display:inline-block;width:.32em;height:.32em;border:1.5px solid #fff;border-radius:50%}
+.mq-item:nth-child(even){color:transparent;-webkit-text-stroke:1px #fff}
+.band-wrap{overflow:hidden;padding-block:70px}
+.band{background:#fff;color:#000;transform:rotate(-2.5deg);width:112%;margin-left:-6%;padding-block:16px;overflow:hidden}
+.band .mq-item{font-size:clamp(24px,3vw,44px);font-weight:700}
+.band .mq-item i{border-color:#000}
+.band .mq-item:nth-child(even){color:#000;-webkit-text-stroke:0}
+
+/* sections */
+.sec{padding-block:clamp(110px,16vw,220px)}
+.sec-head{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:16px;border-top:1px solid #3a3a3a;padding-top:28px;margin-bottom:clamp(48px,7vw,96px);color:var(--mute)}
+.sec-head > span:first-child{display:flex;align-items:center;font-family:var(--f-display);font-size:clamp(36px,5vw,76px);font-weight:700;letter-spacing:-.045em;line-height:1;text-transform:none;color:#fff}
+.sec-head > span:first-child .dot{width:12px;height:12px;margin-right:18px}
+.dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:#fff;margin-right:12px;vertical-align:middle;animation:blink 2s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.manifesto{display:grid;gap:clamp(28px,4vw,48px);max-width:1150px}
+.manifesto p{margin:0;font-size:clamp(24px,3.4vw,50px);line-height:1.18;letter-spacing:-.03em;font-weight:500;text-wrap:pretty}
+.manifesto p.big{font-size:clamp(34px,5.6vw,88px);font-weight:700;letter-spacing:-.05em;line-height:1}
+
+/* čo robíme */
+.lead{font-size:clamp(20px,2.2vw,30px);line-height:1.35;letter-spacing:-.02em;max-width:30ch;margin:0 0 clamp(56px,8vw,110px)}
+.statement{margin:0 0 clamp(72px,10vw,140px);font-size:clamp(40px,7.4vw,124px);font-weight:700;letter-spacing:-.055em;line-height:.92}
+.statement .ghost{-webkit-text-stroke:1px var(--mute);font-weight:500}
+.stack{display:grid;gap:clamp(20px,3vw,40px);padding-bottom:100px}
+.card{position:sticky;top:calc(96px + var(--i) * 22px);min-height:560px;background:var(--panel);border:1px solid #242424;border-radius:6px;display:grid;grid-template-columns:1.1fr .9fr;overflow:hidden;transform-origin:50% 0;transition:border-color .5s}
+.card:hover{border-color:#4a4a4a}
+.card::before{content:"";position:absolute;inset:0;background-image:linear-gradient(#141414 1px,transparent 1px),linear-gradient(90deg,#141414 1px,transparent 1px);background-size:32px 32px;pointer-events:none}
+.card-body{position:relative;padding:clamp(24px,4vw,56px);display:flex;flex-direction:column;justify-content:space-between;gap:40px;min-width:0}
+.card-top{display:flex;justify-content:space-between;color:var(--mute)}
+.card h3{margin:0;font-size:clamp(40px,6vw,96px);font-weight:700;letter-spacing:-.055em;line-height:.9}
+.card p{margin:0;max-width:40ch;font-size:clamp(17px,1.5vw,20px);color:#b9b9b9;line-height:1.55}
+.card-art{position:relative;border-left:1px solid #1e1e1e;display:grid;place-items:center;padding:clamp(20px,3vw,40px)}
+.card-art svg{width:100%;max-width:340px;height:auto;overflow:visible;transition:transform .8s var(--ease)}
+.card:hover .card-art svg{transform:scale(1.05) rotate(-2deg)}
+.draw path,.draw circle{fill:none;stroke:#fff;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
+.draw .dim{stroke:var(--mute);stroke-width:.8}
+.draw text{fill:var(--mute);font-family:var(--f-mono);font-size:7px;letter-spacing:.12em}
+@media (max-width:760px){
+  .card{grid-template-columns:1fr;min-height:auto;top:calc(80px + var(--i) * 14px)}
+  .card-art{border-left:0;border-top:1px solid #1e1e1e;padding:24px 24px 28px;order:-1}
+  .card-art svg{max-width:200px}
+}
+
+/* vízia */
+.vision-h{margin:0;font-size:clamp(34px,5.4vw,86px);font-weight:600;letter-spacing:-.05em;line-height:1;max-width:16ch;text-wrap:balance}
+.verbs{display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:clamp(24px,4vw,64px);padding-block:clamp(40px,6vw,80px)}
+.verbs-pre{margin:0 0 12px;font-size:clamp(20px,2.4vw,34px);color:var(--mute);letter-spacing:-.02em}
+.roller{height:1.02em;overflow:hidden;font-size:clamp(52px,10vw,170px);font-weight:800;letter-spacing:-.06em;line-height:1}
+.roller ul,.vnum ul{list-style:none;margin:0;padding:0}
+.roller li{height:1.02em;line-height:1.02em}
+.verbs-meta{margin-top:28px;display:flex;gap:24px;align-items:center;color:var(--mute)}
+.vnum{display:inline-block;height:1.4em;line-height:1.4em;overflow:hidden;color:#fff}
+.vnum li{height:1.4em}
+.vbar{flex:0 1 200px;height:1px;background:var(--dim);position:relative}
+.vbar i{position:absolute;inset:0;background:#fff;transform-origin:left;transform:scaleX(.2)}
+.verbs-art{position:relative;aspect-ratio:1;max-width:520px;width:100%;justify-self:center;border:1px solid var(--line);border-radius:6px;background-image:linear-gradient(#111 1px,transparent 1px),linear-gradient(90deg,#111 1px,transparent 1px);background-size:25px 25px}
+.verbs-art svg{position:absolute;inset:0;width:100%;height:100%}
+.va{opacity:0}.va:first-child{opacity:1}
+.corner{position:absolute;color:var(--mute);font-size:9px}
+.corner.a{left:12px;top:10px}.corner.b{right:12px;bottom:10px}
+.resp{margin:0;font-size:clamp(22px,2.6vw,38px);letter-spacing:-.03em;line-height:1.2;max-width:24ch;font-weight:500}
+.vision-close{max-width:44ch;font-size:clamp(20px,2vw,28px);line-height:1.45;letter-spacing:-.015em;color:#c9c9c9;margin:clamp(40px,6vw,80px) 0 0 auto}
+@media (max-width:760px){.verbs{grid-template-columns:1fr}.verbs-art{max-width:300px;order:-1}}
+
+/* podcast */
+.pod-h{margin:0 0 clamp(48px,7vw,96px);font-size:clamp(44px,8vw,132px);font-weight:700;letter-spacing:-.06em;line-height:.9}
+.pod-h .ghost{font-weight:500}
+.pod-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(32px,5vw,80px);align-items:start}
+.pod-grid > *{min-width:0}
+.pod-copy p{margin:0 0 20px;font-size:clamp(17px,1.4vw,20px);color:#bdbdbd;max-width:46ch}
+.pod-copy p.strong{color:#fff;font-size:clamp(20px,1.8vw,26px);letter-spacing:-.02em;line-height:1.35}
+.player{border:1px solid #242424;border-radius:6px;background:var(--panel);padding:clamp(20px,3vw,32px);display:grid;gap:28px;position:relative;overflow:hidden}
+.player::after{content:"";position:absolute;inset:-1px;border-radius:6px;pointer-events:none;background:linear-gradient(110deg,transparent 40%,rgba(255,255,255,.07) 50%,transparent 60%);background-size:250% 100%;animation:sheen 6s linear infinite}
+@keyframes sheen{from{background-position:120% 0}to{background-position:-120% 0}}
+.player-top{display:flex;justify-content:space-between;align-items:center;color:var(--mute)}
+.rec{display:flex;align-items:center;gap:10px;color:#fff}
+.rec i{width:8px;height:8px;border-radius:50%;background:#fff;animation:blink 1.2s steps(1) infinite}
+.wave{height:clamp(120px,16vw,190px);display:flex;align-items:center;gap:3px}
+.wave span{flex:1;background:#fff;border-radius:2px;transform-origin:center;animation:wv .8s ease-in-out infinite alternate;opacity:.9}
+.wave span:nth-child(3n){opacity:.45}
+@keyframes wv{from{transform:scaleY(.18)}to{transform:scaleY(1)}}
+.player-bot{display:flex;justify-content:space-between;color:var(--mute);gap:16px;flex-wrap:wrap;font-variant-numeric:tabular-nums}
+.ep{font-size:clamp(28px,3.4vw,48px);font-weight:700;letter-spacing:-.04em;line-height:1}
+.ep small{display:block;margin-top:8px;font-weight:400;font-size:13px;letter-spacing:.18em;color:var(--mute);font-family:var(--f-mono)}
+.notify{margin-top:36px;display:grid;gap:10px}
+.notify-row{display:flex;border-bottom:1px solid var(--dim);transition:border-color .4s}
+.notify-row:focus-within{border-color:#fff}
+.notify input{flex:1;min-width:0;background:none;border:0;padding:18px 0;font-size:18px;outline:none}
+.notify input::placeholder{color:#6e6e6e}
+.notify button{background:none;border:0;padding:0 0 0 16px;font-weight:600;white-space:nowrap;cursor:pointer;min-height:44px}
+.form-msg{min-height:1.4em;color:var(--mute);font-size:14px;margin:0}
+
+/* prečo */
+.why-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:clamp(32px,5vw,80px);align-items:start}
+.why{display:grid;gap:clamp(36px,5vw,64px)}
+.why p{margin:0;font-size:clamp(28px,4.2vw,68px);font-weight:500;letter-spacing:-.045em;line-height:1.04;max-width:20ch;text-wrap:balance}
+.why p.s{font-size:clamp(20px,2.2vw,32px);color:var(--mute);max-width:32ch;letter-spacing:-.025em;line-height:1.25}
+.gear-box{position:sticky;top:110px;aspect-ratio:1;width:100%;border:1px solid var(--line);border-radius:6px;overflow:hidden;background-color:#030303;background-image:linear-gradient(#101010 1px,transparent 1px),linear-gradient(90deg,#101010 1px,transparent 1px);background-size:25px 25px}
+.gear-box canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.final{margin-top:clamp(64px,8vw,120px);padding-top:clamp(40px,6vw,80px);border-top:1px solid var(--line)}
+.final .line > span{font-size:clamp(44px,8.6vw,150px);font-weight:800;letter-spacing:-.065em;line-height:.9}
+.final .line + .line > span{color:transparent;-webkit-text-stroke:1px #fff;font-weight:600;font-size:clamp(28px,5vw,86px);letter-spacing:-.05em;margin-top:.3em;max-width:20ch}
+@media (max-width:760px){.why-grid{grid-template-columns:1fr}.gear-box{position:relative;top:0;max-width:420px;order:-1}}
+
+/* kontakt */
+.press{margin:0;font-weight:300;letter-spacing:-.05em;line-height:.95}
+.press .w{display:inline-block;font-weight:300;transition:font-weight .7s var(--ease),letter-spacing .7s var(--ease)}
+.press .w:hover{font-weight:900;letter-spacing:-.03em}
+.contact-h{font-size:clamp(52px,10.5vw,190px);margin-bottom:clamp(56px,8vw,110px)}
+.contact-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(20px,2.5vw,32px);align-items:stretch}
+.orko .btn-solid{color:#000}.orko .btn-solid:hover{color:#fff}
+.orko .btn-line{color:#fff}.orko .btn-line:hover{color:#000}
+.cpanel{border:1px solid #242424;border-radius:6px;background:var(--panel);padding:clamp(24px,3.4vw,44px);transition:border-color .5s}
+.cpanel:hover,.cpanel:focus-within{border-color:#4a4a4a}
+.cpanel-top{display:flex;justify-content:space-between;color:var(--mute);margin-bottom:clamp(24px,3vw,40px)}
+.cinfo{display:grid;gap:clamp(16px,2vw,24px);grid-auto-rows:1fr}
+.cinfo .ctile{justify-content:space-between}
+.cmail{display:flex;flex-direction:column}
+.cmail-addr{font-family:var(--f-head);font-stretch:68%;font-weight:800;text-transform:uppercase;font-size:clamp(40px,5vw,80px);line-height:.9;letter-spacing:-.01em;overflow-wrap:anywhere;transition:opacity .4s}
+.cmail-addr:hover{opacity:.7}
+.cmail-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:auto;padding-top:clamp(28px,4vw,48px)}
+.csocial{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(20px,2.5vw,32px)}
+.ctile{position:relative;isolation:isolate;overflow:hidden;display:flex;flex-direction:column;gap:28px;padding:clamp(20px,2.6vw,32px);border:1px solid #242424;border-radius:6px;background:var(--panel);transition:color .45s,border-color .45s}
+.ctile::before{content:"";position:absolute;inset:0;background:#fff;z-index:-1;transform:scaleY(0);transform-origin:bottom;transition:transform .5s var(--ease)}
+.ctile:hover{color:#000;border-color:#fff}
+.ctile:hover::before{transform:scaleY(1);transform-origin:top}
+.ctile .k{color:var(--mute);transition:color .45s}
+.ctile:hover .k{color:#444}
+.ctile .v{font-size:clamp(22px,2.2vw,32px);font-weight:600;letter-spacing:-.03em}
+.ctile .a{position:absolute;top:clamp(16px,2.2vw,28px);right:clamp(16px,2.2vw,28px);font-size:22px;transition:transform .45s var(--ease)}
+.ctile:hover .a{transform:rotate(45deg)}
+.contact-grid > *{min-width:0}
+.field{position:relative;margin-bottom:28px}
+.field label{display:block;color:var(--mute);margin-bottom:6px}
+.field input,.field textarea{width:100%;background:none;border:0;border-bottom:1px solid var(--dim);padding:12px 0;font-size:19px;outline:none;resize:vertical}
+.field textarea{min-height:120px}
+.field::after{content:"";position:absolute;left:0;bottom:0;height:1px;width:100%;background:#fff;transform:scaleX(0);transform-origin:left;transition:transform .6s var(--ease)}
+.field:focus-within::after{transform:scaleX(1)}
+.rows{border-top:1px solid var(--line)}
+.row{display:grid;grid-template-columns:110px 1fr auto;align-items:center;gap:16px;padding:26px 12px;border-bottom:1px solid var(--line);position:relative;isolation:isolate;transition:color .45s}
+.row::before{content:"";position:absolute;inset:0;background:#fff;z-index:-1;transform:scaleY(0);transform-origin:bottom;transition:transform .5s var(--ease)}
+.row:hover{color:#000}
+.row:hover::before{transform:scaleY(1);transform-origin:top}
+.row .k{color:var(--mute);transition:color .45s}
+.row:hover .k{color:#444}
+.row .v{font-size:clamp(20px,2.2vw,30px);font-weight:600;letter-spacing:-.03em;overflow-wrap:anywhere}
+.row .a{font-size:22px;transition:transform .45s var(--ease)}
+.row:hover .a{transform:rotate(45deg)}
+.copy-btn{background:none;border:1px solid currentColor;border-radius:999px;padding:6px 12px;min-height:36px;font-family:var(--f-mono);font-size:10px;letter-spacing:.16em;cursor:pointer}
+@media (max-width:760px){
+  .contact-grid,.pod-grid{grid-template-columns:1fr}
+  .row{grid-template-columns:1fr auto;padding:22px 4px}
+  .row .k{grid-column:1/-1}
+}
+
+/* footer */
+.foot{padding-top:clamp(60px,8vw,120px);border-top:1px solid var(--line);overflow:hidden}
+.foot-row{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;color:var(--mute);padding-bottom:clamp(20px,3vw,40px)}
+.foot-row a:hover{color:#fff}
+.giant{font-size:clamp(90px,33vw,560px);font-weight:800;letter-spacing:-.07em;line-height:.74;margin:0 0 -.1em;white-space:nowrap;text-align:center;display:flex;justify-content:center}
+.giant span{display:block;font-weight:800}
+
+/* zakladatelia */
+.founders{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:clamp(20px,2.5vw,32px)}
+.fd{display:flex;flex-direction:column;gap:18px;min-width:0}
+.fd-photo{position:relative;aspect-ratio:4/5;border:1px solid #242424;border-radius:6px;overflow:hidden;display:grid;place-items:center;color:var(--mute);background-color:var(--panel);background-image:linear-gradient(#141414 1px,transparent 1px),linear-gradient(90deg,#141414 1px,transparent 1px);background-size:32px 32px;transition:border-color .5s}
+.fd-photo svg{width:42%;height:auto;transition:transform .8s var(--ease)}
+.fd-photo svg path,.fd-photo svg circle{fill:none;stroke:#5a5a5a;stroke-width:1.2}
+.fd-photo .mono{position:absolute;left:14px;bottom:12px;font-size:10px}
+.fd-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(1);transition:filter .6s,transform .8s var(--ease)}
+.fd:hover .fd-photo{border-color:#4a4a4a}
+.fd:hover .fd-photo svg{transform:scale(1.06)}
+.fd:hover .fd-photo img{filter:grayscale(0);transform:scale(1.04)}
+.fd-meta{display:flex;justify-content:space-between;color:var(--mute);border-top:1px solid var(--line);padding-top:14px}
+.fd-name{margin:0;font-size:clamp(34px,3.6vw,56px);line-height:.92}
+.fd-bio{margin:0;color:#b9b9b9;font-size:17px;line-height:1.55;max-width:40ch}
+.fd-links{display:flex;gap:20px;color:#fff}
+.fd-links a{padding-block:12px;border-bottom:1px solid transparent;transition:border-color .4s}
+.fd-links a:hover{border-color:#fff}
+
+/* headline typeface: condensed Archivo over Geist body */
+.hero-title,.statement,.manifesto p.big,.card h3,.vision-h,.roller,.pod-h,.why p:not(.s),.final .line > span,.final .line + .line > span,.contact-h,.giant,.sec-head > span:first-child,.ep,.menu a,.fd-name,.intro-reveal{font-family:var(--f-head);font-stretch:68%;text-transform:uppercase;letter-spacing:-.01em;font-weight:800}
+.hero-title{font-size:clamp(56px,10.5vw,184px);line-height:.88}
+.statement{font-size:clamp(48px,9vw,150px);line-height:.9}
+.statement .ghost,.pod-h .ghost,.hero-title .ghost{font-weight:700}
+.manifesto p.big{font-size:clamp(40px,6.8vw,108px);line-height:.95}
+.card h3{font-size:clamp(48px,7vw,116px);line-height:.88}
+.vision-h{font-size:clamp(40px,6.4vw,104px);max-width:18ch;line-height:.95}
+.roller{font-size:clamp(60px,12vw,200px)}
+.pod-h{font-size:clamp(52px,9.5vw,160px);line-height:.9}
+.why p:not(.s){font-size:clamp(36px,5.2vw,84px);line-height:.95;max-width:18ch}
+.final .line > span{font-size:clamp(48px,9.5vw,168px);line-height:.9}
+.final .line + .line > span{font-size:clamp(30px,5.6vw,96px);font-weight:700}
+.contact-h{font-size:clamp(60px,12.5vw,220px)}
+.giant{font-size:clamp(110px,40vw,680px);line-height:.78}
+.sec-head > span:first-child{font-size:clamp(40px,5.6vw,86px)}
+.press .w{font-weight:300}
+.press .w:hover{font-weight:900;letter-spacing:.01em}
+
+/* script accent: Instrument Serif italic for small labels + contact headline */
+.orko{--f-script:"Instrument Serif",Georgia,"Times New Roman",serif}
+.sec-head > span:last-child,.eyebrow,.verbs-pre{font-family:var(--f-script);font-style:italic;text-transform:none;letter-spacing:0;font-weight:400}
+.sec-head > span:last-child{font-size:clamp(20px,1.9vw,30px);color:#a8a8a8;line-height:1.1}
+.eyebrow{font-size:clamp(20px,1.8vw,28px);color:#a8a8a8}
+.verbs-pre{font-size:clamp(24px,2.6vw,40px);color:#a8a8a8}
+.contact-h{font-family:var(--f-script);font-style:italic;font-stretch:normal;text-transform:none;font-weight:400;letter-spacing:-.02em;font-size:clamp(52px,8.5vw,140px);line-height:.95}
+.press.contact-h .w,.press.contact-h .w:hover{font-weight:400;letter-spacing:-.02em}
+
+/* o nás: calmer editorial rhythm */
+.manifesto{max-width:none;gap:clamp(28px,4vw,56px)}
+.manifesto p{font-size:clamp(18px,1.5vw,21px);line-height:1.6;letter-spacing:-.01em;font-weight:400;color:#b9b9b9;max-width:54ch;justify-self:end}
+.manifesto p.first{font-size:clamp(22px,2.2vw,32px);line-height:1.35;letter-spacing:-.02em;color:#fff;max-width:36ch;justify-self:start}
+.manifesto p.big{font-size:clamp(40px,5.4vw,88px);line-height:.92;color:#fff;max-width:none;justify-self:start;padding-top:clamp(12px,2vw,28px);border-top:1px solid var(--line);width:100%}
+.manifesto p.script{font-family:var(--f-script);font-style:italic;font-size:clamp(26px,3vw,46px);line-height:1.15;letter-spacing:-.01em;color:#fff;max-width:26ch}
+
+/* footer: admin + legal */
+.foot{padding-top:clamp(60px,7vw,100px);padding-bottom:28px}
+.fgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(220px,100%),1fr));gap:clamp(32px,4vw,56px);padding-bottom:clamp(40px,5vw,64px)}
+.fcol{display:flex;flex-direction:column;align-items:flex-start;gap:4px;min-width:0}
+.fcol > a{color:#cfcfcf;padding-block:6px;font-size:16px;line-height:1.35;transition:color .3s}
+.fcol > a:hover{color:#fff}
+.fh{margin:0 0 10px;color:var(--mute)}
+.fbrand-logo{display:flex;align-items:center;gap:12px;font-family:var(--f-head);font-stretch:68%;font-weight:800;font-size:30px;letter-spacing:0;color:#fff}
+.fbrand-logo svg{width:30px;height:30px}
+.fbrand-logo path{fill:#fff;fill-rule:evenodd}
+.fbrand-tag{margin:8px 0 20px;font-family:var(--f-script);font-style:italic;font-size:22px;color:#a8a8a8}
+.fco{margin:0;display:grid;gap:10px}
+.fco div{display:grid;gap:2px}
+.fco dt{color:var(--mute);font-size:10px}
+.fco dd{margin:0;color:#cfcfcf;font-size:15px}
+.fnote{margin:0;color:#8c8c8c;font-size:15px}
+.flegal{margin:0;padding-block:24px;border-top:1px solid var(--line);color:#8c8c8c;font-size:13px;line-height:1.6;max-width:110ch}
+.foot .foot-row{padding:20px 0 0;border-top:1px solid var(--line)}
+
+/* pre koho */
+.audience{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:clamp(20px,2.5vw,32px)}
+.aud{display:flex;flex-direction:column;gap:20px;padding:clamp(24px,3vw,40px);border:1px solid #242424;border-radius:6px;background:var(--panel);min-width:0;transition:border-color .5s}
+.aud:hover{border-color:#4a4a4a}
+.aud-top{display:flex;justify-content:space-between;color:var(--mute)}
+.aud-h{margin:0;font-family:var(--f-head);font-stretch:68%;font-weight:800;text-transform:uppercase;font-size:clamp(34px,3.6vw,56px);line-height:.92;letter-spacing:-.01em}
+.aud p{margin:0;color:#b9b9b9;font-size:17px;line-height:1.55;flex:1;max-width:40ch}
+.aud .btn{align-self:flex-start;margin-top:8px}
+
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* ── time-based motion ── */
+@media (prefers-reduced-motion: no-preference){
+  .iw span{animation:riseIn 1.4s var(--ease) both;animation-delay:calc(var(--i) * 90ms + .15s)}
+  .mk{animation:mkIn 1.4s var(--ease) both}
+  .hud,.tagline{animation:fadeUp 1s var(--ease) .7s both}
+  .hero::before{animation:gridDrift 18s linear infinite}
+  .hero::after{animation:sweep 14s ease-in-out infinite alternate}
+  .mq-track{animation:mq 38s linear infinite}
+  .band .mq-track{animation:mq 30s linear infinite reverse}
+  .marquee:hover .mq-track{animation-play-state:paused}
+  .roller ul{animation:roll 10s var(--ease) infinite}
+  .vnum ul{animation:rollN 10s var(--ease) infinite}
+  .vbar i{animation:vbar 10s var(--ease) infinite}
+  .va{animation:vaShow 10s linear infinite}
+  .va :is(path,circle){stroke-dasharray:1;stroke-dashoffset:1;animation:vaDraw 10s var(--ease) infinite;animation-delay:inherit}
+  .giant span{animation:breathe 3.2s ease-in-out infinite alternate;animation-delay:calc(var(--i) * -.8s)}
+}
+@keyframes riseIn{from{transform:translateY(55%) rotateX(-75deg);opacity:0}to{transform:none;opacity:1}}
+@keyframes mkIn{from{transform:translate(-50%,-50%) scale(.6) rotate(-40deg);opacity:0}to{transform:translate(-50%,-50%);opacity:1}}
+@keyframes fadeUp{from{opacity:0;translate:0 12px}to{opacity:1;translate:0 0}}
+@keyframes gridDrift{to{background-position:80px 80px,80px 80px}}
+@keyframes sweep{from{transform:translateX(-10%)}to{transform:translateX(70vw)}}
+@keyframes mq{to{transform:translateX(-50%)}}
+@keyframes roll{0%,15%{transform:translateY(0)}20%,35%{transform:translateY(-1.02em)}40%,55%{transform:translateY(-2.04em)}60%,75%{transform:translateY(-3.06em)}80%,95%{transform:translateY(-4.08em)}100%{transform:translateY(-5.1em)}}
+@keyframes rollN{0%,15%{transform:translateY(0)}20%,35%{transform:translateY(-1.4em)}40%,55%{transform:translateY(-2.8em)}60%,75%{transform:translateY(-4.2em)}80%,95%{transform:translateY(-5.6em)}100%{transform:translateY(-7em)}}
+@keyframes vbar{0%,15%{transform:scaleX(.2)}20%,35%{transform:scaleX(.4)}40%,55%{transform:scaleX(.6)}60%,75%{transform:scaleX(.8)}80%,95%{transform:scaleX(1)}100%{transform:scaleX(.2)}}
+@keyframes vaShow{0%{opacity:0}2%,18%{opacity:1}20%,100%{opacity:0}}
+@keyframes vaDraw{0%{stroke-dashoffset:1}13%,100%{stroke-dashoffset:0}}
+@keyframes breathe{from{font-weight:800}to{font-weight:200}}
+
+/* ── scroll-driven motion (modern browsers; content stays visible elsewhere) ── */
+@supports (animation-timeline: view()){
+  @media (prefers-reduced-motion: no-preference){
+    .progress{display:block;animation:grow linear both;animation-timeline:scroll(root)}
+    .line{view-timeline-name:--ln}
+    .line > span{animation:lineUp linear both;animation-timeline:--ln;animation-range:entry 5% cover 32%}
+    .rv{animation:rvUp linear both;animation-timeline:view();animation-range:entry 0% entry 85%}
+    .manifesto p{animation:fillIn linear both;animation-timeline:view();animation-range:entry 15% cover 48%}
+    .card{view-timeline-name:--card;animation:cardIn linear both;animation-timeline:view();animation-range:entry 0% entry 75%}
+    .card .draw :is(path,circle){stroke-dasharray:1;stroke-dashoffset:1;animation:draw linear both;animation-timeline:--card;animation-range:entry 35% cover 50%}
+    .verbs-art{animation:tilt linear both;animation-timeline:view();animation-range:entry 0% cover 50%}
+    .gear-box{animation:boxIn linear both;animation-timeline:view();animation-range:entry 0% entry 80%}
+    .band{animation:bandSkew linear both;animation-timeline:view();animation-range:cover 0% cover 100%}
+    .giant{animation:giantIn linear both;animation-timeline:view();animation-range:entry 0% cover 60%}
+  }
+}
+@keyframes grow{to{transform:scaleX(1)}}
+@keyframes introOut{to{translate:0 80px;opacity:0}}
+@keyframes lineUp{from{transform:translateY(110%) skewY(5deg)}to{transform:none}}
+@keyframes rvUp{from{opacity:0;transform:translateY(60px)}to{opacity:1;transform:none}}
+@keyframes fillIn{from{opacity:.14;filter:blur(4px)}to{opacity:1;filter:blur(0)}}
+@keyframes fillInLite{from{opacity:.14}to{opacity:1}}
+/* touch devices (phones, tablets): drop the effects that repaint every frame while scrolling */
+@media (hover: none), (pointer: coarse){
+  .nav-dock{mix-blend-mode:normal}
+  .hero::before,.hero::after,.player::after{animation:none !important}
+  .manifesto p{animation-name:fillInLite !important}
+  /* finish reveals early so nothing lags behind the finger */
+  .rv{animation-range:entry 0% entry 45% !important}
+  .card{animation-name:rvUp !important;animation-range:entry 0% entry 40% !important}
+  .line > span{animation-range:entry 0% cover 20% !important}
+  .manifesto p{animation-range:entry 0% cover 30% !important}
+  .verbs-art,.gear-box{animation-range:entry 0% entry 50% !important}
+  .card .draw :is(path,circle){animation-range:entry 10% cover 30% !important}
+}
+@keyframes cardIn{from{transform:perspective(1400px) rotateX(22deg) translateY(120px) scale(.94);opacity:.25}to{transform:none;opacity:1}}
+@keyframes draw{to{stroke-dashoffset:0}}
+@keyframes tilt{from{transform:perspective(1200px) rotateY(-28deg) rotateX(10deg) scale(.9);opacity:0}to{transform:none;opacity:1}}
+@keyframes boxIn{from{transform:perspective(1200px) rotateY(24deg) translateY(80px);opacity:0}to{transform:none;opacity:1}}
+@keyframes bandSkew{from{transform:rotate(-6deg) translateX(-4%)}to{transform:rotate(1deg) translateX(4%)}}
+@keyframes giantIn{from{transform:translateY(30%);opacity:.2}to{transform:none;opacity:1}}
+@media (prefers-reduced-motion: reduce){.dot,.rec i,.scroll-hint i::after,.nav-logo svg,.player::after{animation:none}}
+</style>
+<style>
+.menu[hidden]{display:none}
+@media (prefers-reduced-motion: no-preference){html{scroll-behavior:smooth}}
+</style>
+</head>
+<body>
+<div class="orko" id="top">
+
+  <div class="nav-dock">
+    <div class="progress" aria-hidden="true"></div>
+    <header class="nav">
+      <a href="#top" class="nav-logo"><svg viewBox="-50 -50 100 100" aria-hidden="true"><path d="M-47,0a47,47 0 1,0 94,0a47,47 0 1,0 -94,0Z M-33,0a33,33 0 1,0 66,0a33,33 0 1,0 -66,0Z"></path></svg>ORKO</a>
+      <nav class="nav-links mono" aria-label="Hlavná navigácia">
+        <a href="#o-nas">O nás</a>
+        <a href="#zakladatelia">Zakladatelia</a>
+        <a href="#co-robime">Čo robíme</a>
+        <a href="#vizia">Vízia</a>
+        <a href="#podcast">Podcast</a>
+        <a href="#kontakt">Kontakt</a>
+      </nav>
+      <button class="menu-btn mono" type="button" aria-expanded="false" aria-controls="menu" id="menuBtn">Menu</button>
+    </header>
+  </div>
+
+    <div class="menu" id="menu" hidden role="dialog" aria-label="Menu">
+      <button class="menu-close mono" type="button" data-close-menu>Zavrieť</button>
+      <a href="#o-nas" style="--i:0" data-close-menu>O nás</a>
+      <a href="#zakladatelia" style="--i:1" data-close-menu>Zakladatelia</a>
+      <a href="#co-robime" style="--i:2" data-close-menu>Čo robíme</a>
+      <a href="#vizia" style="--i:2" data-close-menu>Vízia</a>
+      <a href="#podcast" style="--i:3" data-close-menu>Podcast</a>
+      <a href="#kontakt" style="--i:4" data-close-menu>Kontakt</a>
+      <p class="mono">Remeslá / Príležitosti / Budúcnosť</p>
+    </div>
+
+  <!-- 01 INTRO — 3D ring with orbiting tools -->
+  <section class="intro" aria-label="Intro">
+   <div class="intro-stage">
+    <h1 class="sr">ORKO</h1>
+      <svg class="mk" id="mkFallback" viewBox="-50 -50 100 100" role="img" aria-label="ORKO logo"><path d="M-47,0a47,47 0 1,0 94,0a47,47 0 1,0 -94,0Z M-33,0a33,33 0 1,0 66,0a33,33 0 1,0 -66,0Z"></path></svg>
+    
+      <canvas id="introCanvas" aria-hidden="true"></canvas>
+    <div class="intro-ui">
+    <div class="scroll-hint mono">Scroll<i></i></div>
+    </div>
+    <p class="intro-reveal" aria-hidden="true">Remeslá. Príležitosti. Budúcnosť.</p>
+   </div>
+  </section>
+
+  <!-- 02 HERO -->
+  <section class="hero" aria-label="Úvod">
+    <div class="wrap hero-inner">
+      <p class="eyebrow mono rv">Remeslo je príležitosť</p>
+      <h2 class="hero-title">
+        <span class="line"><span>Najviac</span></span>
+        <span class="line"><span class="ghost">podceňovaná</span></span>
+        <span class="line"><span>príležitosť dneška.</span></span>
+      </h2>
+      <p class="hero-sub rv">ORKO ukazuje mladým ľuďom, že remeslo môže byť cesta k vlastnému podnikaniu, nezávislosti a nadpriemernému zárobku.</p>
+      <div class="ctas rv">
+        <a href="#kontakt" class="btn btn-solid">Spolupracuj s nami <span class="arr">→</span></a>
+        <a href="#co-robime" class="btn btn-line">Čo robíme</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 O NÁS -->
+  <section id="o-nas" class="sec wrap" aria-label="O nás">
+    <div class="sec-head mono"><span><span class="dot"></span>O nás</span><span>Traja zakladatelia</span></div>
+    <div class="manifesto">
+      <p class="first">V spoločnosti sa často hovorí o úspechu, podnikaní a finančnej slobode. Málokto však hovorí o tom, odkiaľ veľká časť skutočného úspechu naozaj pochádza.</p>
+      <p class="big">Práve preto vzniklo ORKO.</p>
+      <p>Sme traja mladí chalani, ktorí veria, že remeslá predstavujú jednu z najväčších a zároveň najviac podceňovaných príležitostí dnešnej doby. Chceme ukázať našej generácii, že úspešná budúcnosť nemusí viesť iba cez kancelárie, univerzitné tituly alebo kariéru na sociálnych sieťach.</p>
+      <p class="big">Existuje aj iná cesta.</p>
+      <p class="script">Cesta odbornosti, schopností, podnikania a budovania skutočnej hodnoty.</p>
+    </div>
+  </section>
+
+  <!-- 03b ZAKLADATELIA — swap each placeholder for the real photo, name, role and bio -->
+  <section id="zakladatelia" class="sec wrap" aria-label="Zakladatelia" style="padding-top: 0">
+    <div class="sec-head mono"><span><span class="dot"></span>Zakladatelia</span><span>Traja chalani za ORKO</span></div>
+    <div class="founders">
+      <article class="fd rv">
+        <div class="fd-photo">
+          <svg viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="38" r="16"></circle><path d="M20 92 a30 30 0 0 1 60 0"></path></svg>
+          <span class="mono">[FOTO 01]</span>
+        </div>
+        <div class="fd-meta mono"><span>01</span><span>[ROLA]</span></div>
+        <h3 class="fd-name">[Meno Priezvisko]</h3>
+        <p class="fd-bio">[Krátke predstavenie: kto je, čomu sa venuje a čo ho priviedlo k ORKO.]</p>
+        <div class="fd-links mono"><a href="#zakladatelia">Instagram ↗</a><a href="#zakladatelia">LinkedIn ↗</a></div>
+      </article>
+      <article class="fd rv">
+        <div class="fd-photo">
+          <svg viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="38" r="16"></circle><path d="M20 92 a30 30 0 0 1 60 0"></path></svg>
+          <span class="mono">[FOTO 02]</span>
+        </div>
+        <div class="fd-meta mono"><span>02</span><span>[ROLA]</span></div>
+        <h3 class="fd-name">[Meno Priezvisko]</h3>
+        <p class="fd-bio">[Krátke predstavenie: kto je, čomu sa venuje a čo ho priviedlo k ORKO.]</p>
+        <div class="fd-links mono"><a href="#zakladatelia">Instagram ↗</a><a href="#zakladatelia">LinkedIn ↗</a></div>
+      </article>
+      <article class="fd rv">
+        <div class="fd-photo">
+          <svg viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="38" r="16"></circle><path d="M20 92 a30 30 0 0 1 60 0"></path></svg>
+          <span class="mono">[FOTO 03]</span>
+        </div>
+        <div class="fd-meta mono"><span>03</span><span>[ROLA]</span></div>
+        <h3 class="fd-name">[Meno Priezvisko]</h3>
+        <p class="fd-bio">[Krátke predstavenie: kto je, čomu sa venuje a čo ho priviedlo k ORKO.]</p>
+        <div class="fd-links mono"><a href="#zakladatelia">Instagram ↗</a><a href="#zakladatelia">LinkedIn ↗</a></div>
+      </article>
+    </div>
+  </section>
+
+  <!-- 04 ČO ROBÍME -->
+  <section id="co-robime" class="sec wrap" aria-label="Čo robíme">
+    <div class="sec-head mono"><span><span class="dot"></span>Čo robíme</span><span>Platforma</span></div>
+    <p class="lead rv">ORKO je platforma, ktorá približuje mladým ľuďom svet remesiel z pohľadu, aký na Slovensku často chýba.</p>
+    <h2 class="statement">
+      <span class="line"><span class="ghost">Neukazujeme len profesie.</span></span>
+      <span class="line"><span>Ukazujeme príležitosti.</span></span>
+    </h2>
+    <div class="stack">
+      <article class="card" style="--i:0">
+        <div class="card-body">
+          <div class="card-top mono"><span>Príbehy</span><span>Od nuly</span></div>
+          <h3>Príbehy</h3>
+          <p>Približujeme príbehy ľudí, ktorí začínali s minimom skúseností a postupne vybudovali úspešné firmy, silné značky a finančne stabilný život.</p>
+        </div>
+        <div class="card-art">
+          <svg class="draw" viewBox="0 0 200 160" aria-hidden="true">
+            <circle cx="70" cy="60" r="16" pathLength="1"></circle>
+            <path d="M42 118 a28 28 0 0 1 56 0" pathLength="1"></path>
+            <path d="M112 40 h58 a8 8 0 0 1 8 8 v26 a8 8 0 0 1 -8 8 h-34 l-12 12 v-12 h-12 a8 8 0 0 1 -8 -8 v-26 a8 8 0 0 1 8 -8z" pathLength="1"></path>
+            <path d="M122 55 h40 M122 67 h26" pathLength="1"></path>
+            <path class="dim" d="M20 140 H180 M20 135 V145 M180 135 V145" pathLength="1"></path>
+            <text x="84" y="154">ZAČIATOK</text>
+          </svg>
+        </div>
+      </article>
+      <article class="card" style="--i:1">
+        <div class="card-body">
+          <div class="card-top mono"><span>Myslenie</span><span>Rozhodnutia</span></div>
+          <h3>Myslenie</h3>
+          <p>Zaujíma nás, ako rozmýšľajú, ako sa rozhodujú, čo museli obetovať a čo ich doviedlo k výsledkom, ktoré dnes dosahujú.</p>
+        </div>
+        <div class="card-art">
+          <svg class="draw" viewBox="0 0 200 160" aria-hidden="true">
+            <circle cx="30" cy="80" r="5" pathLength="1"></circle>
+            <path d="M35 80 H70" pathLength="1"></path>
+            <path d="M70 80 C90 80 90 40 110 40 H150" pathLength="1"></path>
+            <path d="M70 80 H150" pathLength="1"></path>
+            <path d="M70 80 C90 80 90 120 110 120 H150" pathLength="1"></path>
+            <circle cx="155" cy="40" r="5" pathLength="1"></circle>
+            <circle cx="155" cy="80" r="5" pathLength="1"></circle>
+            <path d="M150 112 l10 16 M160 112 l-10 16" pathLength="1"></path>
+            <path class="dim" d="M20 20 H180 M20 15 V25 M180 15 V25" pathLength="1"></path>
+            <text x="78" y="12">ROZHODNUTIE</text>
+          </svg>
+        </div>
+      </article>
+      <article class="card" style="--i:2">
+        <div class="card-body">
+          <div class="card-top mono"><span>Cesta</span><span>Nezávislosť</span></div>
+          <h3>Cesta</h3>
+          <p>Chceme ukázať, že remeslo môže byť nielen poctivá práca, ale aj cesta k vlastnému podnikaniu, nezávislosti a nadpriemernému zárobku.</p>
+        </div>
+        <div class="card-art">
+          <svg class="draw" viewBox="0 0 200 160" aria-hidden="true">
+            <path d="M20 140 H55 V112 H90 V84 H125 V56 H160 V28 H180" pathLength="1"></path>
+            <path d="M160 28 l10 -12 l10 12" pathLength="1"></path>
+            <path d="M170 16 V28" pathLength="1"></path>
+            <circle cx="38" cy="128" r="4" pathLength="1"></circle>
+            <path class="dim" d="M20 150 H180 M20 145 V155 M180 145 V155" pathLength="1"></path>
+            <text x="88" y="160">RAST</text>
+          </svg>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- 04b PRE KOHO -->
+  <section id="pre-koho" class="sec wrap" aria-label="Pre koho" style="padding-top: 0">
+    <div class="sec-head mono"><span><span class="dot"></span>Pre koho</span><span>Tri cesty k ORKO</span></div>
+    <div class="audience">
+      <article class="aud rv">
+        <div class="aud-top mono"><span>01</span><span>Študenti</span></div>
+        <h3 class="aud-h">Pre mladých</h3>
+        <p>Rozmýšľaš, kam ďalej po škole? Ukážeme ti, že remeslo môže byť cesta k vlastnému biznisu, nezávislosti a dobrému zárobku.</p>
+        <a href="#podcast" class="btn btn-line">Sleduj príbehy <span class="arr">→</span></a>
+      </article>
+      <article class="aud rv">
+        <div class="aud-top mono"><span>02</span><span>Rodičia &amp; školy</span></div>
+        <h3 class="aud-h">Pre rodičov a školy</h3>
+        <p>Chcete mladým ukázať remeslá v inom svetle? Radi sa spojíme so školami, učiteľmi aj rodičmi.</p>
+        <a href="#kontakt" class="btn btn-line">Spojme sa <span class="arr">→</span></a>
+      </article>
+      <article class="aud rv">
+        <div class="aud-top mono"><span>03</span><span>Firmy &amp; partneri</span></div>
+        <h3 class="aud-h">Pre firmy a partnerov</h3>
+        <p>Ste remeselná firma, inštitúcia alebo partner, ktorý chce podporiť mladú generáciu? Poďme spolu ukázať, kam vedie remeslo.</p>
+        <a href="#kontakt" class="btn btn-solid">Staňte sa partnerom <span class="arr">→</span></a>
+      </article>
+    </div>
+  </section>
+
+  <!-- 05 VÍZIA -->
+  <section id="vizia" aria-label="Vízia">
+    <div class="wrap sec" style="padding-bottom: 40px">
+      <div class="sec-head mono"><span><span class="dot"></span>Naša vízia</span><span>Hodnota</span></div>
+      <h2 class="vision-h rv">Veríme, že budúcnosť patrí ľuďom, ktorí dokážu vytvárať hodnotu.</h2>
+    </div>
+    <div class="wrap">
+      <div class="verbs">
+        <div>
+          <p class="verbs-pre">Ľuďom, ktorí niečo vedia</p>
+          <div class="roller">
+            <ul>
+              <li>postaviť</li>
+              <li>opraviť</li>
+              <li>navrhnúť</li>
+              <li>vyrobiť</li>
+              <li>viesť.</li>
+              <li aria-hidden="true">postaviť</li>
+            </ul>
+          </div>
+          <div class="verbs-meta mono">
+            <span class="vnum" aria-hidden="true"><ul><li>01</li><li>02</li><li>03</li><li>04</li><li>05</li><li>01</li></ul></span>
+            <span class="vbar"><i></i></span>
+            <span>05</span>
+          </div>
+        </div>
+        <div class="verbs-art" aria-hidden="true">
+          <svg class="draw" viewBox="0 0 200 200">
+            <g class="va" style="animation-delay: 0s">
+              <path d="M40 150H160 M40 125H160 M40 100H160 M40 75H160 M40 150V75 M160 150V75 M70 150V125 M100 150V125 M130 150V125 M55 125V100 M85 125V100 M115 125V100 M145 125V100 M70 100V75 M100 100V75 M130 100V75" pathLength="1"></path>
+              <path d="M115 60 L150 45 L165 55 L130 70 Z M150 45 L160 30" pathLength="1"></path>
+              <path class="dim" d="M40 168H160 M40 163V173 M160 163V173 M28 75V150 M23 75H33 M23 150H33" pathLength="1"></path>
+              <text x="86" y="182">1200 MM</text>
+            </g>
+            <g class="va" style="animation-delay: -8s">
+              <path d="M52 158 L112 98 M64 170 L124 110" pathLength="1"></path>
+              <path d="M52 158 a8.5 8.5 0 0 0 12 12" pathLength="1"></path>
+              <path d="M112 98 A30 30 0 1 1 124 110" pathLength="1"></path>
+              <path d="M146 58 L128 76 L140 88 L158 70" pathLength="1"></path>
+              <path d="M150 150 l10 -6 l10 6 v12 l-10 6 l-10 -6 z" pathLength="1"></path>
+              <circle cx="160" cy="156" r="4" pathLength="1"></circle>
+              <path class="dim" d="M30 40 L60 40 M30 35 V45" pathLength="1"></path>
+              <text x="30" y="30">M12</text>
+            </g>
+            <g class="va" style="animation-delay: -6s">
+              <circle cx="100" cy="38" r="7" pathLength="1"></circle>
+              <path d="M96 45 L66 150 M104 45 L134 150 M80 102 H120" pathLength="1"></path>
+              <path d="M66 150 l-2 10 M134 150 l2 10" pathLength="1"></path>
+              <path class="dim" d="M50 160 A60 60 0 0 1 150 160" pathLength="1"></path>
+              <path d="M30 185 H175 L30 115 Z" pathLength="1"></path>
+              <path d="M45 175 H125 L45 136 Z" pathLength="1"></path>
+              <text x="150" y="112">R 60</text>
+            </g>
+            <g class="va" style="animation-delay: -4s">
+              <path d="M30 70 H150 L150 98 L30 110 Z" pathLength="1"></path>
+              <path d="M30 110 l3 6 l3 -6 l3 6 l3 -6 l3 6 l3 -6 l3 6 l3 -6 l3 6 l3 -6 l3 6 l3 -6 l3 6 l3 -6 l3 6 l3 -6 l3 6 l3 -6 l3 6 l3 -6 l3 6 l3 -6 l3 6 l3 -6 l3 6 l3 -6 l3 6 l3 -6 l3 6 l3 -6 l3 6 l3 -6 l3 6 l3 -6 l3 6 l3 -6 l3 6 l3 -6 l3 6 l3 -6" pathLength="1"></path>
+              <path d="M150 62 h24 a7 7 0 0 1 7 7 v34 a7 7 0 0 1 -7 7 h-24 z" pathLength="1"></path>
+              <path d="M160 76 h12 v18 h-12 z" pathLength="1"></path>
+              <path d="M20 150 H180 V172 H20 Z" pathLength="1"></path>
+              <path class="dim" d="M100 140 V182" pathLength="1"></path>
+              <text x="104" y="136">REZ</text>
+            </g>
+            <g class="va" style="animation-delay: -2s">
+              <circle cx="60" cy="112" r="12" pathLength="1"></circle>
+              <circle cx="100" cy="100" r="14" pathLength="1"></circle>
+              <circle cx="140" cy="112" r="12" pathLength="1"></circle>
+              <path d="M40 160 a20 20 0 0 1 40 0 M78 160 a22 22 0 0 1 44 0 M120 160 a20 20 0 0 1 40 0" pathLength="1"></path>
+              <path d="M40 60 H160 M145 48 L160 60 L145 72" pathLength="1"></path>
+              <path class="dim" d="M40 178 H160" pathLength="1"></path>
+              <text x="84" y="190">TÍM</text>
+            </g>
+          </svg>
+          <span class="corner a mono">Blueprint</span>
+          <span class="corner b mono">M 1:20</span>
+        </div>
+      </div>
+    </div>
+    <div class="wrap" style="padding-top: clamp(40px, 6vw, 80px); padding-bottom: 40px">
+      <p class="resp rv">Ľuďom, ktorí sa neboja zobrať zodpovednosť do vlastných rúk.</p>
+      <p class="vision-close rv">Naším cieľom je zmeniť spôsob, akým mladá generácia vníma remeslá. Chceme ukázať ich skutočný potenciál, príležitosti na rast a možnosti vybudovať úspešnú kariéru či vlastný biznis.</p>
+    </div>
+    <div class="band-wrap" aria-hidden="true">
+      <div class="band">
+        <div class="mq-track">
+            <span class="mq-item">Remeslá<i></i></span>
+            <span class="mq-item">Príležitosti<i></i></span>
+            <span class="mq-item">Budúcnosť<i></i></span>
+            <span class="mq-item">Remeslá<i></i></span>
+            <span class="mq-item">Príležitosti<i></i></span>
+            <span class="mq-item">Budúcnosť<i></i></span>
+            <span class="mq-item">Remeslá<i></i></span>
+            <span class="mq-item">Príležitosti<i></i></span>
+            <span class="mq-item">Budúcnosť<i></i></span>
+            <span class="mq-item">Remeslá<i></i></span>
+            <span class="mq-item">Príležitosti<i></i></span>
+            <span class="mq-item">Budúcnosť<i></i></span>
+            <span class="mq-item">Remeslá<i></i></span>
+            <span class="mq-item">Príležitosti<i></i></span>
+            <span class="mq-item">Budúcnosť<i></i></span>
+            <span class="mq-item">Remeslá<i></i></span>
+            <span class="mq-item">Príležitosti<i></i></span>
+            <span class="mq-item">Budúcnosť<i></i></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 06 PODCAST -->
+  <section id="podcast" class="sec wrap" aria-label="Podcast" style="padding-top: clamp(60px, 8vw, 120px)">
+    <div class="sec-head mono"><span><span class="dot"></span>Čo pripravujeme</span><span>Podcast &amp; rozhovory</span></div>
+    <h2 class="pod-h">
+      <span class="line"><span>Bez filtrov.</span></span>
+      <span class="line"><span class="ghost">Bez prikrášľovania.</span></span>
+    </h2>
+    <div class="pod-grid">
+      <div class="pod-copy">
+        <p class="strong rv">Už čoskoro prinesieme sériu podcastov a rozhovorov s úspešnými podnikateľmi, majiteľmi remeselných firiem a odborníkmi, ktorí si svoju pozíciu vybudovali vlastnou prácou.</p>
+        <p class="rv">Budeme hovoriť o ich začiatkoch, úspechoch, pádoch, rizikách aj veľkých rozhodnutiach. O tom, čo fungovalo, čo nefungovalo a čo by dnes urobili inak.</p>
+        <p class="rv">Len reálne príbehy ľudí, ktorí dokázali premeniť svoje schopnosti na úspech.</p>
+        <form class="notify rv" id="notifyForm" novalidate>
+          <label for="notifyEmail" class="mono" style="color: #8c8c8c">Chceš vedieť, keď vyjde prvá epizóda?</label>
+          <div class="notify-row">
+            <input type="email" id="notifyEmail" name="email" placeholder="Tvoj e-mail">
+            <button type="submit">Daj mi vedieť →</button>
+          </div>
+          <p class="form-msg" id="notifyMsg" role="status"></p>
+        </form>
+      </div>
+      <div class="player rv">
+        <div class="player-top mono"><span class="rec"><i></i>Rec</span><span>ORKO Podcast</span></div>
+        <div class="ep">EP 01<small>ČOSKORO</small></div>
+        <div class="wave" aria-hidden="true">
+            <span style="height: 6%; animation-duration: 1.33s; animation-delay: -0.58s"></span>
+            <span style="height: 12%; animation-duration: 1.16s; animation-delay: -1.07s"></span>
+            <span style="height: 17%; animation-duration: 1.18s; animation-delay: -1.51s"></span>
+            <span style="height: 26%; animation-duration: 1.12s; animation-delay: -1.27s"></span>
+            <span style="height: 37%; animation-duration: 0.72s; animation-delay: -0.75s"></span>
+            <span style="height: 36%; animation-duration: 1.13s; animation-delay: -0.11s"></span>
+            <span style="height: 38%; animation-duration: 0.92s; animation-delay: -1.84s"></span>
+            <span style="height: 45%; animation-duration: 0.61s; animation-delay: -1.03s"></span>
+            <span style="height: 53%; animation-duration: 1.12s; animation-delay: -1.29s"></span>
+            <span style="height: 40%; animation-duration: 1.32s; animation-delay: -1.82s"></span>
+            <span style="height: 31%; animation-duration: 0.80s; animation-delay: -1.67s"></span>
+            <span style="height: 31%; animation-duration: 0.64s; animation-delay: -0.60s"></span>
+            <span style="height: 37%; animation-duration: 0.77s; animation-delay: -1.87s"></span>
+            <span style="height: 46%; animation-duration: 1.16s; animation-delay: -1.76s"></span>
+            <span style="height: 18%; animation-duration: 0.75s; animation-delay: -1.12s"></span>
+            <span style="height: 47%; animation-duration: 0.88s; animation-delay: -0.39s"></span>
+            <span style="height: 74%; animation-duration: 0.55s; animation-delay: -0.73s"></span>
+            <span style="height: 39%; animation-duration: 1.10s; animation-delay: -1.85s"></span>
+            <span style="height: 51%; animation-duration: 0.65s; animation-delay: -0.81s"></span>
+            <span style="height: 37%; animation-duration: 0.83s; animation-delay: -0.85s"></span>
+            <span style="height: 41%; animation-duration: 0.98s; animation-delay: -1.23s"></span>
+            <span style="height: 35%; animation-duration: 1.32s; animation-delay: -0.92s"></span>
+            <span style="height: 82%; animation-duration: 1.07s; animation-delay: -1.27s"></span>
+            <span style="height: 57%; animation-duration: 0.95s; animation-delay: -1.38s"></span>
+            <span style="height: 90%; animation-duration: 0.86s; animation-delay: -1.42s"></span>
+            <span style="height: 38%; animation-duration: 1.03s; animation-delay: -0.70s"></span>
+            <span style="height: 45%; animation-duration: 0.85s; animation-delay: -1.59s"></span>
+            <span style="height: 88%; animation-duration: 0.60s; animation-delay: -1.64s"></span>
+            <span style="height: 26%; animation-duration: 0.87s; animation-delay: -0.31s"></span>
+            <span style="height: 26%; animation-duration: 1.40s; animation-delay: -0.44s"></span>
+            <span style="height: 70%; animation-duration: 0.63s; animation-delay: -0.91s"></span>
+            <span style="height: 67%; animation-duration: 0.62s; animation-delay: -1.84s"></span>
+            <span style="height: 91%; animation-duration: 1.30s; animation-delay: -1.77s"></span>
+            <span style="height: 93%; animation-duration: 1.19s; animation-delay: -0.55s"></span>
+            <span style="height: 21%; animation-duration: 0.72s; animation-delay: -0.15s"></span>
+            <span style="height: 20%; animation-duration: 1.06s; animation-delay: -0.46s"></span>
+            <span style="height: 78%; animation-duration: 0.94s; animation-delay: -1.38s"></span>
+            <span style="height: 38%; animation-duration: 1.29s; animation-delay: -0.47s"></span>
+            <span style="height: 48%; animation-duration: 1.30s; animation-delay: -0.24s"></span>
+            <span style="height: 57%; animation-duration: 0.50s; animation-delay: -1.83s"></span>
+            <span style="height: 67%; animation-duration: 1.33s; animation-delay: -0.04s"></span>
+            <span style="height: 86%; animation-duration: 0.67s; animation-delay: -1.94s"></span>
+            <span style="height: 60%; animation-duration: 1.11s; animation-delay: -0.53s"></span>
+            <span style="height: 34%; animation-duration: 0.69s; animation-delay: -1.13s"></span>
+            <span style="height: 21%; animation-duration: 1.19s; animation-delay: -1.40s"></span>
+            <span style="height: 67%; animation-duration: 0.95s; animation-delay: -0.07s"></span>
+            <span style="height: 24%; animation-duration: 1.33s; animation-delay: -0.26s"></span>
+            <span style="height: 61%; animation-duration: 1.30s; animation-delay: -0.07s"></span>
+            <span style="height: 72%; animation-duration: 1.28s; animation-delay: -1.99s"></span>
+            <span style="height: 74%; animation-duration: 1.19s; animation-delay: -0.84s"></span>
+            <span style="height: 30%; animation-duration: 1.15s; animation-delay: -1.76s"></span>
+            <span style="height: 37%; animation-duration: 0.71s; animation-delay: -0.81s"></span>
+            <span style="height: 63%; animation-duration: 1.00s; animation-delay: -0.70s"></span>
+            <span style="height: 46%; animation-duration: 1.16s; animation-delay: -0.67s"></span>
+            <span style="height: 49%; animation-duration: 0.88s; animation-delay: -0.40s"></span>
+            <span style="height: 27%; animation-duration: 1.39s; animation-delay: -1.99s"></span>
+            <span style="height: 40%; animation-duration: 1.28s; animation-delay: -1.84s"></span>
+            <span style="height: 19%; animation-duration: 1.08s; animation-delay: -0.27s"></span>
+            <span style="height: 30%; animation-duration: 1.00s; animation-delay: -1.54s"></span>
+            <span style="height: 45%; animation-duration: 0.93s; animation-delay: -0.37s"></span>
+            <span style="height: 24%; animation-duration: 0.65s; animation-delay: -1.33s"></span>
+            <span style="height: 25%; animation-duration: 1.01s; animation-delay: -1.01s"></span>
+            <span style="height: 30%; animation-duration: 0.83s; animation-delay: -1.50s"></span>
+            <span style="height: 7%; animation-duration: 0.77s; animation-delay: -1.08s"></span>
+        </div>
+        <div class="player-bot mono"><span>00:00 / --:--</span><span>Rozhovory s majiteľmi firiem</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 07 PREČO — 3D gear train -->
+  <section id="preco" class="sec wrap" aria-label="Prečo ORKO">
+    <div class="sec-head mono"><span><span class="dot"></span>Prečo ORKO</span><span>Informácie menia životy</span></div>
+    <div class="why-grid">
+      <div class="why">
+        <p class="rv">Pretože veríme, že informácie menia životy.</p>
+        <p class="s rv">Možno práve jeden rozhovor, jedna skúsenosť alebo jeden príbeh ukáže niekomu smer, ktorý by inak nikdy neobjavil.</p>
+        <p class="s rv">Ak mladým ľuďom ukážeme, že remeslá môžu byť cestou k úspechu, finančnej slobode a vlastnému podnikaniu, splnili sme svoj cieľ.</p>
+      </div>
+      <div class="gear-box" aria-hidden="true">
+        
+          <canvas id="gearCanvas" aria-hidden="true"></canvas>
+        <span class="corner a mono">Prevod</span>
+        <span class="corner b mono">M 1:5</span>
+      </div>
+    </div>
+    <div class="final">
+      <span class="line"><span>ORKO nie je len o remeslách.</span></span>
+      <span class="line"><span>ORKO je o príležitostiach, ambíciách a budovaní budúcnosti.</span></span>
+    </div>
+  </section>
+
+  <!-- 08 KONTAKT -->
+  <section id="kontakt" class="sec wrap" aria-label="Kontakt">
+    <div class="sec-head mono"><span><span class="dot"></span>Kontakt</span><span>Spolupráca</span></div>
+    <h2 class="press contact-h"><span class="w">Poďme</span> <span class="w">spolupracovať.</span></h2>
+    <div class="contact-grid">
+      <form class="cpanel" id="contactForm" novalidate>
+        <div class="cpanel-top mono"><span>Napíš nám správu</span></div>
+        <div class="field"><label for="cName" class="mono">Meno</label><input id="cName" name="name"></div>
+        <div class="field"><label for="cEmail" class="mono">E-mail</label><input id="cEmail" name="email" type="email"></div>
+        <div class="field"><label for="cMsg" class="mono">Správa</label><textarea id="cMsg" name="message"></textarea></div>
+        <button type="submit" class="btn btn-solid">Odoslať <span class="arr">→</span></button>
+        <p class="form-msg" role="status" id="contactMsg" style="margin-top: 16px"></p>
+      </form>
+      <div class="cinfo">
+          <a class="ctile" href="mailto:ahoj@orko.sk">
+            <span class="mono k">E-mail</span><span class="v">ahoj@orko.sk</span><span class="a" aria-hidden="true">↗</span>
+          </a>
+          <a class="ctile" href="https://www.instagram.com/" target="_blank" rel="noopener">
+            <span class="mono k">Instagram</span><span class="v">@orko</span><span class="a" aria-hidden="true">↗</span>
+          </a>
+          <a class="ctile" href="https://www.tiktok.com/" target="_blank" rel="noopener">
+            <span class="mono k">TikTok</span><span class="v">@orko</span><span class="a" aria-hidden="true">↗</span>
+          </a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <div class="wrap">
+      <div class="fgrid">
+        <nav class="fcol" aria-label="Stránka">
+          <p class="fh mono">Stránka</p>
+          <a href="#o-nas">O nás</a>
+          <a href="#zakladatelia">Zakladatelia</a>
+          <a href="#co-robime">Čo robíme</a>
+          <a href="#pre-koho">Pre koho</a>
+          <a href="#vizia">Vízia</a>
+          <a href="#podcast">Podcast</a>
+          <a href="#kontakt">Kontakt</a>
+        </nav>
+        <nav class="fcol" aria-label="Právne informácie">
+          <p class="fh mono">Právne informácie</p>
+          <a href="#top">Ochrana osobných údajov (GDPR)</a>
+          <a href="#top">Zásady používania cookies</a>
+          <a href="#top">Nastavenia cookies</a>
+          <a href="#top">Podmienky používania webu</a>
+          <a href="#top">Vyhlásenie o prístupnosti</a>
+          <a href="#top">Povinne zverejňované informácie</a>
+          <a href="#top">Oznámenie proti­spoločenskéj činnosti</a>
+        </nav>
+        <div class="fcol">
+          <p class="fh mono">Kontakt</p>
+          <a href="mailto:ahoj@orko.sk">ahoj@orko.sk</a>
+          <a href="https://www.instagram.com/" target="_blank" rel="noopener">Instagram ↗</a>
+          <a href="https://www.tiktok.com/" target="_blank" rel="noopener">TikTok ↗</a>
+        </div>
+      </div>
+      <p class="flegal">Osobné údaje spracúvame v súlade s nariadením (EÚ) 2016/679 (GDPR) a zákonom č. 18/2018 Z. z. o ochrane osobných údajov. Cookies používame v súlade so zákonom č. 452/2021 Z. z. o elektronických komunikáciách, nepovinné len s vaším súhlasom.</p>
+      <div class="foot-row mono">
+        <span>© 2026 ORKO. Všetky práva vyhradené.</span>
+        <a href="#top">Späť hore ↑</a>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<script src="lib/three.min.js"></script>
+<script>
+/* minimal runtime: the page logic was authored as a component; this shim runs it on a plain page */
+class DCLogic {
+  constructor(props) { this.props = props || {}; this.state = {}; }
+  setState(p) { this.state = Object.assign({}, this.state, typeof p === 'function' ? p(this.state) : p); if (this.__render) this.__render(); }
+  forceUpdate() { if (this.__render) this.__render(); }
+}
+class Component extends DCLogic {
+  constructor(...a) {
+    super(...a);
+    this.state = { menu: false, gl: false, notifyMsg: '', contactMsg: '', copyLabel: 'Kopírovať' };
+    this._scenes = {};
+    this.introRef = (el) => this.bindScene('intro', el);
+    this.gearRef = (el) => this.bindScene('gear', el);
+    this.openMenu = () => this.setState({ menu: true });
+    this.closeMenu = () => this.setState({ menu: false });
+    this.copyMail = () => {
+      const done = (txt) => { this.setState({ copyLabel: txt }); clearTimeout(this._ct); this._ct = setTimeout(() => this.setState({ copyLabel: 'Kopírovať' }), 1800); };
+      try { navigator.clipboard.writeText('ahoj@orko.sk').then(() => done('Skopírované'), () => done('ahoj@orko.sk')); } catch (e) { done('ahoj@orko.sk'); }
+    };
+    const valid = (v) => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);
+    // ── FORMS ── paste your Formspree endpoint here (formspree.io → New form → copy the URL, e.g. https://formspree.io/f/abcdwxyz).
+    // Left empty, the forms still work: they open the visitor's e-mail app with the message pre-filled to MAIL_TO.
+    const FORM_ENDPOINT = '';
+    const MAIL_TO = 'ahoj@orko.sk';
+    const send = (data, subject) => {
+      if (!FORM_ENDPOINT) {
+        const body = Object.keys(data).map((k) => k + ': ' + data[k]).join('\n');
+        window.location.href = 'mailto:' + MAIL_TO + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+        return Promise.resolve('mail');
+      }
+      return fetch(FORM_ENDPOINT, { method: 'POST', headers: { Accept: 'application/json', 'Content-Type': 'application/json' }, body: JSON.stringify(Object.assign({ _subject: subject }, data)) })
+        .then((r) => { if (!r.ok) throw new Error('send failed'); return 'sent'; });
+    };
+    const failMsg = 'Nepodarilo sa odoslať. Napíš nám priamo na ' + MAIL_TO + '.';
+    this.submitNotify = (e) => {
+      e.preventDefault();
+      if (this._sendingN) return;
+      const f = e.currentTarget; const v = (f.querySelector('#notifyEmail').value || '').trim();
+      if (!valid(v)) { this.setState({ notifyMsg: 'Skontroluj e-mail, v adrese niečo chýba.' }); return; }
+      this._sendingN = true; this.setState({ notifyMsg: 'Odosielam…' });
+      send({ email: v, typ: 'Podcast – upozornenie na prvú epizódu' }, 'ORKO: chcem vedieť o prvej epizóde')
+        .then((how) => { this.setState({ notifyMsg: how === 'mail' ? 'Otvorili sme ti e-mail, stačí ho odoslať.' : 'Hotovo. Ozveme sa, keď vyjde prvá epizóda.' }); f.reset(); })
+        .catch(() => this.setState({ notifyMsg: failMsg }))
+        .then(() => { this._sendingN = false; });
+    };
+    this.submitContact = (e) => {
+      e.preventDefault();
+      if (this._sendingC) return;
+      const f = e.currentTarget; const g = (s) => (f.querySelector(s).value || '').trim();
+      if (!g('#cName')) { this.setState({ contactMsg: 'Napíš nám, ako sa voláš.' }); return; }
+      if (!valid(g('#cEmail'))) { this.setState({ contactMsg: 'Skontroluj e-mail, v adrese niečo chýba.' }); return; }
+      if (!g('#cMsg')) { this.setState({ contactMsg: 'Správa je prázdna.' }); return; }
+      this._sendingC = true; this.setState({ contactMsg: 'Odosielam…' });
+      send({ meno: g('#cName'), email: g('#cEmail'), sprava: g('#cMsg') }, 'ORKO: nová správa z webu od ' + g('#cName'))
+        .then((how) => { this.setState({ contactMsg: how === 'mail' ? 'Otvorili sme ti e-mail, stačí ho odoslať.' : 'Vďaka. Ozveme sa čo najskôr.' }); f.reset(); })
+        .catch(() => this.setState({ contactMsg: failMsg }))
+        .then(() => { this._sendingC = false; });
+    };
+    // deterministic waveform
+    let s = 7; const rnd = () => { s = (s * 16807) % 2147483647; return (s - 1) / 2147483646; };
+    const n = 64; this._bars = [];
+    for (let i = 0; i < n; i++) {
+      const env = Math.sin((i / n) * Math.PI) * 0.7 + 0.3;
+      this._bars.push({ h: Math.round((20 + rnd() * 80) * env) + '%', d: (0.5 + rnd() * 0.9).toFixed(2) + 's', dl: (-rnd() * 2).toFixed(2) + 's' });
+    }
+    const verbs = ['Postaviť', 'Opraviť', 'Navrhnúť', 'Vyrobiť', 'Viesť'];
+    this._mq = [];
+    for (let r = 0; r < 4; r++) verbs.forEach((v) => this._mq.push({ label: v }));
+    const words = ['Remeslá', 'Príležitosti', 'Budúcnosť'];
+    this._band = [];
+    for (let r = 0; r < 6; r++) words.forEach((v) => this._band.push({ label: v }));
+  }
+
+  renderVals() {
+    const st = this.state || {};
+    const three = this.props.three ?? true;
+    return {
+      three,
+      showFallback: !three || !st.gl,
+      menuOpen: !!st.menu,
+      menuExpanded: st.menu ? 'true' : 'false',
+      openMenu: this.openMenu, closeMenu: this.closeMenu,
+      introRef: this.introRef, gearRef: this.gearRef,
+      marquee: this._mq, band: this._band, bars: this._bars,
+      notifyMsg: st.notifyMsg, contactMsg: st.contactMsg, copyLabel: st.copyLabel,
+      submitNotify: this.submitNotify, submitContact: this.submitContact, copyMail: this.copyMail
+    };
+  }
+
+  componentWillUnmount() {
+    Object.keys(this._scenes).forEach((k) => this._scenes[k].dispose());
+    this._scenes = {};
+    clearTimeout(this._ct);
+  }
+
+  /* ───── 3D plumbing ───── */
+  bindScene(name, el) {
+    const cur = this._scenes[name];
+    if (cur && cur.el === el) return;
+    if (cur) { cur.dispose(); delete this._scenes[name]; }
+    if (!el) { if (name === 'intro' && this.state.gl) this.setState({ gl: false }); return; }
+    const rec = { el, dead: false, dispose() { rec.dead = true; } };
+    this._scenes[name] = rec;
+    let tries = 0;
+    const go = () => {
+      if (rec.dead) return;
+      const T = window.THREE;
+      if (!T) { if (++tries < 150) setTimeout(go, 100); return; }
+      try {
+        const kill = name === 'intro' ? this.makeIntro(T, el) : this.makeGears(T, el);
+        rec.dispose = () => { rec.dead = true; kill(); };
+        if (name === 'intro') this.setState({ gl: true });
+      } catch (err) { /* WebGL unavailable: SVG fallback stays */ }
+    };
+    go();
+  }
+
+  makeEnv(T, renderer) {
+    const pm = new T.PMREMGenerator(renderer);
+    const s = new T.Scene();
+    s.add(new T.Mesh(new T.SphereGeometry(30, 32, 16), new T.MeshBasicMaterial({ color: 0x080808, side: T.BackSide })));
+    const g = new T.PlaneGeometry(1, 1);
+    const panel = (x, y, z, w, h, k) => {
+      const m = new T.MeshBasicMaterial({ side: T.DoubleSide }); m.color.setScalar(k);
+      const p = new T.Mesh(g, m); p.position.set(x, y, z); p.scale.set(w, h, 1); p.lookAt(0, 0, 0); s.add(p);
+    };
+    panel(0, 12, 3, 18, 5, 6);
+    panel(-12, 3, 5, 4, 12, 2.6);
+    panel(12, -2, -3, 5, 10, 1.6);
+    panel(0, -4, -12, 12, 3, 0.9);
+    panel(5, 3, 12, 7, 2, 1.4);
+    const tex = pm.fromScene(s, 0.035).texture;
+    pm.dispose();
+    return tex;
+  }
+
+  mats(T) {
+    return {
+      chrome: new T.MeshStandardMaterial({ color: 0xffffff, metalness: 1, roughness: 0.14 }),
+      steel: new T.MeshStandardMaterial({ color: 0xd4d4d4, metalness: 1, roughness: 0.36 }),
+      black: new T.MeshStandardMaterial({ color: 0x0e0e0e, metalness: 0.35, roughness: 0.4 }),
+      white: new T.MeshStandardMaterial({ color: 0xededed, metalness: 0, roughness: 0.55 })
+    };
+  }
+
+  ringGeo(T, ri, ro, t, c) {
+    const pts = [];
+    const arc = (cx, cy, a0, a1) => { for (let i = 0; i <= 8; i++) { const a = a0 + (a1 - a0) * i / 8; pts.push(new T.Vector2(cx + Math.cos(a) * c, cy + Math.sin(a) * c)); } };
+    arc(ro - c, -t + c, -Math.PI / 2, 0);
+    arc(ro - c, t - c, 0, Math.PI / 2);
+    arc(ri + c, t - c, Math.PI / 2, Math.PI);
+    arc(ri + c, -t + c, Math.PI, Math.PI * 1.5);
+    pts.push(pts[0].clone());
+    const g = new T.LatheGeometry(pts, 200);
+    g.rotateX(Math.PI / 2);
+    return g;
+  }
+
+  hammer(T, M) {
+    const g = new T.Group();
+    const handle = new T.Mesh(new T.CylinderGeometry(0.055, 0.07, 1.25, 20), M.black); handle.rotation.z = Math.PI / 2; handle.position.x = -0.08; g.add(handle);
+    const grip = new T.Mesh(new T.CylinderGeometry(0.085, 0.085, 0.42, 20), M.white); grip.rotation.z = Math.PI / 2; grip.position.x = -0.5; g.add(grip);
+    const head = new T.Mesh(new T.BoxGeometry(0.2, 0.46, 0.2), M.steel); head.position.x = 0.58; g.add(head);
+    const face = new T.Mesh(new T.CylinderGeometry(0.125, 0.125, 0.14, 28), M.chrome); face.position.set(0.58, 0.29, 0); g.add(face);
+    const claw = new T.Mesh(new T.BoxGeometry(0.11, 0.34, 0.15), M.steel); claw.position.set(0.63, -0.36, 0); claw.rotation.z = -0.4; g.add(claw);
+    return g;
+  }
+  wrench(T, M) {
+    const g = new T.Group();
+    g.add(new T.Mesh(new T.BoxGeometry(1.05, 0.16, 0.06), M.chrome));
+    const jaw = new T.Mesh(new T.TorusGeometry(0.2, 0.07, 16, 48, Math.PI * 1.45), M.chrome); jaw.position.x = 0.7; jaw.rotation.z = Math.PI * 0.275; g.add(jaw);
+    const ring = new T.Mesh(new T.TorusGeometry(0.15, 0.06, 16, 48), M.chrome); ring.position.x = -0.66; g.add(ring);
+    return g;
+  }
+  screwdriver(T, M) {
+    const g = new T.Group();
+    const handle = new T.Mesh(new T.CylinderGeometry(0.11, 0.13, 0.55, 28), M.white); handle.rotation.z = Math.PI / 2; handle.position.x = -0.45; g.add(handle);
+    const ferrule = new T.Mesh(new T.CylinderGeometry(0.06, 0.085, 0.09, 20), M.chrome); ferrule.rotation.z = Math.PI / 2; ferrule.position.x = -0.13; g.add(ferrule);
+    const shaft = new T.Mesh(new T.CylinderGeometry(0.03, 0.03, 0.78, 16), M.chrome); shaft.rotation.z = Math.PI / 2; shaft.position.x = 0.3; g.add(shaft);
+    const tip = new T.Mesh(new T.BoxGeometry(0.1, 0.075, 0.016), M.chrome); tip.position.x = 0.72; g.add(tip);
+    return g;
+  }
+  saw(T, M) {
+    const g = new T.Group();
+    const s = new T.Shape(); const yb = -0.12, n = 16, x1 = 0.85, x0 = -0.45, w = (x1 - x0) / n;
+    s.moveTo(x0, 0.2); s.lineTo(x1, 0.1); s.lineTo(x1, yb);
+    for (let i = 0; i < n; i++) { const x = x1 - i * w; s.lineTo(x - w / 2, yb - 0.055); s.lineTo(x - w, yb); }
+    s.lineTo(x0, 0.2);
+    const blade = new T.ExtrudeGeometry(s, { depth: 0.016, bevelEnabled: false }); blade.translate(0, 0, -0.008);
+    g.add(new T.Mesh(blade, M.steel));
+    const handle = new T.Mesh(new T.BoxGeometry(0.36, 0.44, 0.08), M.black); handle.position.set(-0.6, 0.04, 0); g.add(handle);
+    const hole = new T.Mesh(new T.TorusGeometry(0.1, 0.028, 12, 32), M.white); hole.position.set(-0.6, 0.04, 0); g.add(hole);
+    return g;
+  }
+
+  disposeAll(scene, renderer) {
+    scene.traverse((o) => { if (o.geometry) o.geometry.dispose(); if (o.material) (Array.isArray(o.material) ? o.material : [o.material]).forEach((m) => m.dispose()); });
+    renderer.dispose();
+    try { renderer.forceContextLoss(); } catch (e) {}
+  }
+
+  /* ───── scene 1: chrome ORKO ring + orbiting tools + steel dust ───── */
+  makeIntro(T, canvas) {
+    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const lowPower = matchMedia('(pointer: coarse)').matches || innerWidth < 1024;
+    const renderer = new T.WebGLRenderer({ canvas, alpha: true, antialias: !lowPower, powerPreference: 'high-performance' });
+    const pr = Math.min(window.devicePixelRatio || 1, lowPower ? 1 : 2); renderer.setPixelRatio(pr);
+    renderer.outputEncoding = T.sRGBEncoding; renderer.toneMapping = T.ACESFilmicToneMapping; renderer.toneMappingExposure = 1.05;
+    renderer.setClearColor(0x000000, 0);
+    const scene = new T.Scene();
+    const cam = new T.PerspectiveCamera(32, 1, 0.1, 100); cam.position.set(0, 0, 12);
+    const env = this.makeEnv(T, renderer); scene.environment = env;
+    const M = this.mats(T);
+    const rig = new T.Group(); scene.add(rig);
+
+    rig.scale.setScalar(0.72);
+    const ringMat = M.chrome.clone(); ringMat.side = T.DoubleSide;
+    const ring = new T.Mesh(this.ringGeo(T, 1.5, 2.15, 0.2, 0.1), ringMat); rig.add(ring);
+    const orbitA = new T.Mesh(new T.TorusGeometry(3.05, 0.006, 6, 240), new T.MeshBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.22 })); rig.add(orbitA);
+    const orbitB = new T.Mesh(new T.TorusGeometry(3.7, 0.004, 6, 240), new T.MeshBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.1 })); rig.add(orbitB);
+
+    const tools = [this.hammer(T, M), this.wrench(T, M), this.screwdriver(T, M), this.saw(T, M)];
+    const holders = tools.map((t, i) => { const h = new T.Group(); t.scale.setScalar(1.1); h.add(t); rig.add(h); return { h, t, a0: Math.PI / 4 + i * Math.PI / 2, ph: i * 1.7 }; });
+
+    const key = new T.DirectionalLight(0xffffff, 1.6); key.position.set(3, 5, 6); scene.add(key);
+    const rim = new T.DirectionalLight(0xffffff, 1.1); rim.position.set(-6, -2, -4); scene.add(rim);
+    scene.add(new T.AmbientLight(0xffffff, 0.15));
+
+    // steel dust
+    const N = innerWidth < 760 ? 1300 : (lowPower ? 2200 : 5200);
+    const pos = new Float32Array(N * 3), size = new Float32Array(N), rnd = new Float32Array(N);
+    for (let i = 0; i < N; i++) { pos[i * 3] = (Math.random() - 0.5) * 46; pos[i * 3 + 1] = (Math.random() - 0.5) * 28; pos[i * 3 + 2] = (Math.random() - 0.5) * 18 - 5; size[i] = Math.random() * 1.8 + 0.4; rnd[i] = Math.random(); }
+    const pg = new T.BufferGeometry();
+    pg.setAttribute('position', new T.BufferAttribute(pos, 3)); pg.setAttribute('aSize', new T.BufferAttribute(size, 1)); pg.setAttribute('aRnd', new T.BufferAttribute(rnd, 1));
+    const uni = { uTime: { value: 0 }, uMouse: { value: new T.Vector2(99, 99) }, uPR: { value: pr } };
+    const pts = new T.Points(pg, new T.ShaderMaterial({
+      uniforms: uni, transparent: true, depthWrite: false, blending: T.AdditiveBlending,
+      vertexShader: 'attribute float aSize; attribute float aRnd; uniform float uTime; uniform vec2 uMouse; uniform float uPR; varying float vA;\n' +
+        'void main(){ vec3 p = position; float t = uTime * .15;\n' +
+        ' p.x += sin(t*2. + p.y*.9 + aRnd*6.283) * .28; p.y += cos(t*1.7 + p.x*.7 + aRnd*6.283) * .28;\n' +
+        ' vec2 d = p.xy - uMouse; float dist = length(d); float f = smoothstep(2.3, 0., dist);\n' +
+        ' p.xy += (d / (dist + .0001)) * f * 1.2; p.z += f * .9;\n' +
+        ' vec4 mv = modelViewMatrix * vec4(p, 1.); gl_Position = projectionMatrix * mv;\n' +
+        ' gl_PointSize = aSize * uPR * (15. / -mv.z); vA = (.18 + .7*aRnd) * smoothstep(-7., 1.5, p.z) + f * .6; }',
+      fragmentShader: 'varying float vA; void main(){ float d = length(gl_PointCoord - .5); if (d > .5) discard; gl_FragColor = vec4(vec3(1.), smoothstep(.5, 0., d) * vA * .7); }'
+    }));
+    scene.add(pts);
+
+    let mx = 0, my = 0, sx = 0, sy = 0, sp = 0, hasMouse = false;
+    const onMove = (e) => { const r = canvas.getBoundingClientRect(); if (!r.width) return; hasMouse = true; mx = ((e.clientX - r.left) / r.width) * 2 - 1; my = -(((e.clientY - r.top) / r.height) * 2 - 1); };
+    window.addEventListener('pointermove', onMove, { passive: true });
+    const dustTarget = new T.Vector2(99, 99);
+
+    // cached layout: no per-frame DOM reads while scrolling
+    const wrap = canvas.closest('.intro'), stage = canvas.closest('.intro-stage');
+    let W = 0, H = 0, wrapTop = 0, run = 1, scrollY0 = window.scrollY, lastP = -1, lastO = -1;
+    const measure = () => {
+      if (!wrap) return;
+      const r = wrap.getBoundingClientRect();
+      wrapTop = r.top + window.scrollY; run = Math.max(1, r.height - canvas.clientHeight);
+    };
+    const onScroll = () => { scrollY0 = window.scrollY; };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    const fit = (force) => {
+      const w = canvas.clientWidth, h = canvas.clientHeight; if (!w || !h) return;
+      // ignore the small height jumps from the mobile address bar showing/hiding
+      if (!force && w === W && Math.abs(h - H) < 140) return;
+      W = w; H = h; renderer.setSize(w, h, false); cam.aspect = w / h; cam.updateProjectionMatrix();
+      cam.userData.z = Math.max(12, 4.4 / (Math.tan((cam.fov / 2) * Math.PI / 180) * cam.aspect));
+      measure();
+    };
+    let measureTick = 0, lastRP = -1, skip = 0;
+
+    let on = false, raf = 0; const t0 = performance.now();
+    const frame = (now) => {
+      fit();
+      const t = (now - t0) / 1000;
+      sx += (mx - sx) * 0.06; sy += (my - sy) * 0.06;
+      // scroll: camera flies forward through the ring's hole (the O of ORKO)
+      if (++measureTick % 120 === 0) measure();
+      const p = wrap ? Math.min(1, Math.max(0, (scrollY0 - wrapTop) / run)) : 0;
+      // follow the scroll directly on touch (no easing delay), lightly eased on desktop
+      sp = lowPower ? p : sp + (p - sp) * 0.3;
+      if (Math.abs(p - sp) < 0.0005) sp = p;
+      if (stage && Math.abs(sp - lastP) > 0.0005) { lastP = sp; stage.style.setProperty('--p', sp.toFixed(4)); }
+      const e = Math.pow(sp, 2.2), k = 1 - sp;
+      const op = Math.min(1, Math.max(0, (1 - sp) / 0.18));
+      if (Math.abs(op - lastO) > 0.002) { lastO = op; canvas.style.opacity = op.toFixed(3); }
+      rig.rotation.x = sy * 0.35 * k;
+      rig.rotation.y = (sx * 0.5 + Math.sin(t * 0.3) * 0.06) * k;
+      ring.rotation.z = t * 0.12 + sp * 1.4;
+      orbitA.rotation.z = -t * 0.05; orbitB.rotation.x = Math.sin(t * 0.2) * 0.3;
+      holders.forEach((o) => {
+        const f = Math.min(1, sp / 0.45), a = o.a0 + t * 0.16 + f * 0.6, R = 3.05 + f * f * 5;
+        o.h.position.set(Math.cos(a) * R, Math.sin(a) * R, Math.sin(t * 0.8 + o.ph) * 0.25 + f * f * 7);
+        o.h.rotation.z = a + Math.PI / 2;
+        o.t.rotation.x = t * 0.6 + o.ph; o.t.rotation.y = Math.sin(t * 0.5 + o.ph) * 0.4;
+      });
+      const z0 = cam.userData.z || 12;
+      cam.position.z = z0 + (-4 - z0) * e;
+      uni.uTime.value = t;
+      const halfH = Math.tan((cam.fov * Math.PI / 180) / 2) * Math.max(2, Math.abs(cam.position.z));
+      if (hasMouse) dustTarget.set(mx * halfH * cam.aspect, my * halfH); else dustTarget.set(Math.sin(t * 0.35) * 3.2, Math.cos(t * 0.27) * 1.6);
+      uni.uMouse.value.lerp(dustTarget, 0.08);
+      const moved = p !== lastRP; lastRP = p;
+      // skip drawing once faded out; on touch devices idle frames render at half rate
+      if (op > 0 && (!lowPower || moved || (++skip & 1))) renderer.render(scene, cam);
+      if (on && !reduce) raf = requestAnimationFrame(frame);
+    };
+    const io = new IntersectionObserver((es) => { on = es[0].isIntersecting; cancelAnimationFrame(raf); if (on) raf = requestAnimationFrame(frame); });
+    io.observe(canvas);
+    requestAnimationFrame(frame);
+    const onResize = () => { fit(true); if (reduce) requestAnimationFrame(frame); };
+    window.addEventListener('resize', onResize);
+
+    return () => { on = false; cancelAnimationFrame(raf); io.disconnect(); window.removeEventListener('pointermove', onMove); window.removeEventListener('resize', onResize); window.removeEventListener('scroll', onScroll); env.dispose(); this.disposeAll(scene, renderer); };
+  }
+
+  /* ───── scene 2: interlocking gear train, turns with scroll ───── */
+  gearGeo(T, n, m) {
+    const rp = m * n / 2, ra = rp + m, rr = rp - 1.25 * m, step = Math.PI * 2 / n;
+    const s = new T.Shape(); const P = (r, a) => [Math.cos(a) * r, Math.sin(a) * r];
+    for (let i = 0; i < n; i++) {
+      const a = i * step;
+      [P(rr, a - 0.5 * step), P(rr, a - 0.24 * step), P(ra, a - 0.12 * step), P(ra, a + 0.12 * step), P(rr, a + 0.24 * step)]
+        .forEach((p, j) => { if (i === 0 && j === 0) s.moveTo(p[0], p[1]); else s.lineTo(p[0], p[1]); });
+    }
+    s.closePath();
+    const hole = new T.Path(); hole.absarc(0, 0, m * 2.2, 0, Math.PI * 2, true); s.holes.push(hole);
+    if (n >= 12) for (let k = 0; k < 5; k++) { const a = k * Math.PI * 2 / 5 + 0.3; const h = new T.Path(); h.absarc(Math.cos(a) * rp * 0.56, Math.sin(a) * rp * 0.56, rp * 0.15, 0, Math.PI * 2, true); s.holes.push(h); }
+    const g = new T.ExtrudeGeometry(s, { depth: 0.26, bevelEnabled: true, bevelThickness: 0.03, bevelSize: 0.02, bevelSegments: 2, curveSegments: 20 });
+    g.translate(0, 0, -0.13);
+    return g;
+  }
+
+  makeGears(T, canvas) {
+    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const lowPower = matchMedia('(pointer: coarse)').matches || innerWidth < 1024;
+    const renderer = new T.WebGLRenderer({ canvas, alpha: true, antialias: !lowPower });
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, lowPower ? 1 : 2));
+    renderer.outputEncoding = T.sRGBEncoding; renderer.toneMapping = T.ACESFilmicToneMapping; renderer.toneMappingExposure = 1.05;
+    renderer.setClearColor(0x000000, 0);
+    const scene = new T.Scene();
+    const cam = new T.PerspectiveCamera(30, 1, 0.1, 100); cam.position.set(0, 0, 13);
+    const env = this.makeEnv(T, renderer); scene.environment = env;
+    const M = this.mats(T);
+    const rig = new T.Group(); scene.add(rig);
+    const m = 0.15;
+    const spec = [{ n: 16, mat: M.chrome }, { n: 10, mat: M.black, th: -0.5 }, { n: 12, mat: M.steel, th: 2.3 }];
+    const edgeMat = new T.LineBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.22 });
+    const gears = spec.map((s) => {
+      const geo = this.gearGeo(T, s.n, m);
+      const mesh = new T.Mesh(geo, s.mat);
+      mesh.add(new T.LineSegments(new T.EdgesGeometry(geo, 35), edgeMat));
+      const nut = new T.Mesh(new T.CylinderGeometry(0.4, 0.4, 0.4, 6), M.chrome); nut.rotation.x = Math.PI / 2; mesh.add(nut);
+      const holder = new T.Group(); holder.add(mesh); rig.add(holder);
+      return { ...s, mesh, holder, rp: m * s.n / 2 };
+    });
+    const g1 = gears[0];
+    g1.holder.position.set(0, 0, 0);
+    gears.slice(1).forEach((g) => { const d = g1.rp + g.rp; g.holder.position.set(Math.cos(g.th) * d, Math.sin(g.th) * d, 0); g.c = g.th * (1 + g1.n / g.n) + Math.PI - Math.PI / g.n; });
+    rig.position.set(0.45, -0.55, 0);
+    const pivot = new T.Group(); scene.add(pivot); pivot.add(rig);
+
+    const key = new T.DirectionalLight(0xffffff, 1.5); key.position.set(4, 6, 7); scene.add(key);
+    const rim = new T.DirectionalLight(0xffffff, 1.0); rim.position.set(-6, -3, -5); scene.add(rim);
+    scene.add(new T.AmbientLight(0xffffff, 0.18));
+
+    let mx = 0, my = 0, sx = 0, sy = 0;
+    const onMove = (e) => { mx = (e.clientX / innerWidth) * 2 - 1; my = -((e.clientY / innerHeight) * 2 - 1); };
+    window.addEventListener('pointermove', onMove, { passive: true });
+
+    let W = 0, H = 0;
+    const fit = () => { const w = canvas.clientWidth, h = canvas.clientHeight; if (!w || !h || (w === W && h === H)) return; W = w; H = h; renderer.setSize(w, h, false); cam.aspect = w / h; cam.updateProjectionMatrix(); };
+    let on = false, raf = 0, rot = 0, last = performance.now(), lastY = window.scrollY, skipG = 0;
+    const frame = (now) => {
+      fit();
+      const dt = Math.min(0.05, (now - last) / 1000); last = now;
+      const y = window.scrollY; const dy = y - lastY; lastY = y;
+      rot += dt * 0.35 + dy * 0.004;
+      g1.mesh.rotation.z = rot;
+      gears.slice(1).forEach((g) => { g.mesh.rotation.z = g.c - rot * g1.n / g.n; });
+      sx += (mx - sx) * 0.05; sy += (my - sy) * 0.05;
+      pivot.rotation.y = -0.45 + sx * 0.35 + Math.sin(now / 3000) * 0.08;
+      pivot.rotation.x = 0.35 - sy * 0.25;
+      if (!lowPower || dy !== 0 || (++skipG & 1)) renderer.render(scene, cam);
+      if (on && !reduce) raf = requestAnimationFrame(frame);
+    };
+    const io = new IntersectionObserver((es) => { on = es[0].isIntersecting; cancelAnimationFrame(raf); if (on) { last = performance.now(); raf = requestAnimationFrame(frame); } });
+    io.observe(canvas);
+    requestAnimationFrame(frame);
+    return () => { on = false; cancelAnimationFrame(raf); io.disconnect(); window.removeEventListener('pointermove', onMove); env.dispose(); this.disposeAll(scene, renderer); };
+  }
+}
+
+(function () {
+  var $ = function (s) { return document.querySelector(s); };
+  var c = new Component({ three: true });
+  c.__render = function () {
+    var s = c.state || {};
+    var menu = $('#menu'); menu.hidden = !s.menu;
+    $('#menuBtn').setAttribute('aria-expanded', s.menu ? 'true' : 'false');
+    var fb = $('#mkFallback'); if (fb) fb.style.display = s.gl ? 'none' : '';
+    $('#notifyMsg').textContent = s.notifyMsg || '';
+    $('#contactMsg').textContent = s.contactMsg || '';
+  };
+  c.__render();
+  $('#menuBtn').addEventListener('click', c.openMenu);
+  document.querySelectorAll('[data-close-menu]').forEach(function (el) { el.addEventListener('click', c.closeMenu); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && c.state.menu) c.closeMenu(); });
+  $('#notifyForm').addEventListener('submit', c.submitNotify);
+  $('#contactForm').addEventListener('submit', c.submitContact);
+  c.bindScene('intro', $('#introCanvas'));
+  c.bindScene('gear', $('#gearCanvas'));
+})();
+</script>
+</body>
+</html>
